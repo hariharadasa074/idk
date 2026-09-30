@@ -1,0 +1,155 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#181a1f"/>
+      <stop offset="100%" stop-color="#1c2027"/>
+    </linearGradient>
+    <linearGradient id="tire" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3e434f"/>
+      <stop offset="35%" stop-color="#242730"/>
+      <stop offset="70%" stop-color="#181a20"/>
+      <stop offset="100%" stop-color="#101216"/>
+    </linearGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="25%" stop-color="#e2e8f0"/>
+      <stop offset="60%" stop-color="#94a3b8"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+    <linearGradient id="hub" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#475569"/>
+    </linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#2a303c" stroke-width="0.7"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <rect width="1920" height="1040" fill="url(#grid)" opacity="0.8"/>
+
+  <!-- AutoCAD Header -->
+  <rect width="1920" height="36" fill="#131518"/>
+  <rect x="10" y="8" width="20" height="20" rx="3" fill="#e01a22"/>
+  <text x="14" y="23" fill="#ffffff" font-family="sans-serif" font-size="13" font-weight="bold">A</text>
+  <text x="40" y="23" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="12">Autodesk AutoCAD 2027 - EDUCATION (NON COMMERCIAL)  Drawing3 by suman.dwg</text>
+  <text x="1650" y="23" fill="#cbd5e1" font-family="Segoe UI, sans-serif" font-size="12">hariharadasa074</text>
+
+  <!-- Viewport HUD -->
+  <text x="15" y="60" fill="#cbd5e1" font-family="Consolas, monospace" font-size="13">[-][Custom View][Realistic (Fast)]</text>
+
+  <!-- ViewCube (Top Right) -->
+  <g transform="translate(1820, 110) rotate(12)">
+    <polygon points="0,-40 38,-20 0,0 -38,-20" fill="#525b68" stroke="#3b424d" stroke-width="1.5"/>
+    <polygon points="-38,-20 0,0 0,40 -38,20" fill="#3b424d" stroke="#2d333b" stroke-width="1.5"/>
+    <polygon points="0,0 38,-20 38,20 0,40" fill="#444c58" stroke="#2d333b" stroke-width="1.5"/>
+    <text x="-12" y="-15" fill="#f1f5f9" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold">TOP</text>
+    <text x="-18" y="22" fill="#f1f5f9" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold">FRONT</text>
+    <text x="6" y="22" fill="#f1f5f9" font-family="Segoe UI, sans-serif" font-size="9" font-weight="bold">RIGHT</text>
+  </g>
+  <text x="1810" y="180" fill="#94a3b8" font-family="Consolas, monospace" font-size="10">WCS</text>
+
+  <!-- UCS Icon (Bottom Left) -->
+  <g transform="translate(45, 960)">
+    <line x1="0" y1="0" x2="35" y2="25" stroke="#ef4444" stroke-width="3"/>
+    <text x="38" y="32" fill="#ef4444" font-family="Consolas, monospace" font-weight="bold" font-size="12">X</text>
+    <line x1="0" y1="0" x2="30" y2="-25" stroke="#22c55e" stroke-width="3"/>
+    <text x="32" y="-28" fill="#22c55e" font-family="Consolas, monospace" font-weight="bold" font-size="12">Y</text>
+    <line x1="0" y1="0" x2="0" y2="-40" stroke="#3b82f6" stroke-width="3"/>
+    <text x="-4" y="-45" fill="#3b82f6" font-family="Consolas, monospace" font-weight="bold" font-size="12">Z</text>
+  </g>
+
+  <!-- 3D Wheel Model -->
+  <g transform="translate(960, 490) rotate(-24) skewX(-22)">
+    <!-- Shadow -->
+    <ellipse cx="25" cy="30" rx="360" ry="260" fill="#0b0d11" opacity="0.6"/>
+    <!-- Outer Tire Torus -->
+    <ellipse cx="0" cy="0" rx="350" ry="250" fill="url(#tire)" stroke="#474d5a" stroke-width="5"/>
+    <ellipse cx="0" cy="0" rx="325" ry="230" fill="#1b1e25" stroke="#2e333d" stroke-width="3"/>
+
+    <!-- 3D Tread Marks along circumference -->
+    <line x1="328.0" y1="0.0" x2="348.0" y2="0.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="323.0" y1="40.3" x2="342.7" y2="43.1" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="308.2" y1="79.3" x2="327.0" y2="84.8" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="284.1" y1="116.0" x2="301.4" y2="124.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="251.3" y1="149.1" x2="266.6" y2="159.4" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="210.8" y1="177.7" x2="223.7" y2="190.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="164.0" y1="200.9" x2="174.0" y2="214.8" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="112.2" y1="218.0" x2="119.0" y2="233.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="57.0" y1="228.5" x2="60.4" y2="244.2" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="0.0" y1="232.0" x2="0.0" y2="248.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="-57.0" y1="228.5" x2="-60.4" y2="244.2" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="-112.2" y1="218.0" x2="-119.0" y2="233.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="-164.0" y1="200.9" x2="-174.0" y2="214.8" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="-210.8" y1="177.7" x2="-223.7" y2="190.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="-251.3" y1="149.1" x2="-266.6" y2="159.4" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="-284.1" y1="116.0" x2="-301.4" y2="124.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="-308.2" y1="79.3" x2="-327.0" y2="84.8" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="-323.0" y1="40.3" x2="-342.7" y2="43.1" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="-328.0" y1="0.0" x2="-348.0" y2="0.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="-323.0" y1="-40.3" x2="-342.7" y2="-43.1" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="-308.2" y1="-79.3" x2="-327.0" y2="-84.8" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="-284.1" y1="-116.0" x2="-301.4" y2="-124.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="-251.3" y1="-149.1" x2="-266.6" y2="-159.4" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="-210.8" y1="-177.7" x2="-223.7" y2="-190.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="-164.0" y1="-200.9" x2="-174.0" y2="-214.8" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="-112.2" y1="-218.0" x2="-119.0" y2="-233.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="-57.0" y1="-228.5" x2="-60.4" y2="-244.2" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="-0.0" y1="-232.0" x2="-0.0" y2="-248.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="57.0" y1="-228.5" x2="60.4" y2="-244.2" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="112.2" y1="-218.0" x2="119.0" y2="-233.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="164.0" y1="-200.9" x2="174.0" y2="-214.8" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="210.8" y1="-177.7" x2="223.7" y2="-190.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="251.3" y1="-149.1" x2="266.6" y2="-159.4" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="284.1" y1="-116.0" x2="301.4" y2="-124.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="308.2" y1="-79.3" x2="327.0" y2="-84.8" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="323.0" y1="-40.3" x2="342.7" y2="-43.1" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+
+    <!-- Rim Bead & Flange -->
+    <ellipse cx="0" cy="0" rx="250" ry="180" fill="url(#rim)" stroke="#f8fafc" stroke-width="4"/>
+    <ellipse cx="0" cy="0" rx="230" ry="165" fill="#334155" stroke="#475569" stroke-width="3"/>
+    <ellipse cx="0" cy="0" rx="215" ry="155" fill="#1e293b"/>
+
+    <!-- 10 Double Spokes -->
+    <line x1="75.0" y1="0.0" x2="215.0" y2="0.0" stroke="url(#rim)" stroke-width="26" stroke-linecap="round"/>
+    <line x1="75.0" y1="0.0" x2="215.0" y2="0.0" stroke="#ffffff" stroke-width="4" stroke-opacity="0.85"/>
+    <line x1="60.7" y1="32.3" x2="173.9" y2="91.1" stroke="url(#rim)" stroke-width="26" stroke-linecap="round"/>
+    <line x1="60.7" y1="32.3" x2="173.9" y2="91.1" stroke="#ffffff" stroke-width="4" stroke-opacity="0.85"/>
+    <line x1="23.2" y1="52.3" x2="66.4" y2="147.4" stroke="url(#rim)" stroke-width="26" stroke-linecap="round"/>
+    <line x1="23.2" y1="52.3" x2="66.4" y2="147.4" stroke="#ffffff" stroke-width="4" stroke-opacity="0.85"/>
+    <line x1="-23.2" y1="52.3" x2="-66.4" y2="147.4" stroke="url(#rim)" stroke-width="26" stroke-linecap="round"/>
+    <line x1="-23.2" y1="52.3" x2="-66.4" y2="147.4" stroke="#ffffff" stroke-width="4" stroke-opacity="0.85"/>
+    <line x1="-60.7" y1="32.3" x2="-173.9" y2="91.1" stroke="url(#rim)" stroke-width="26" stroke-linecap="round"/>
+    <line x1="-60.7" y1="32.3" x2="-173.9" y2="91.1" stroke="#ffffff" stroke-width="4" stroke-opacity="0.85"/>
+    <line x1="-75.0" y1="0.0" x2="-215.0" y2="0.0" stroke="url(#rim)" stroke-width="26" stroke-linecap="round"/>
+    <line x1="-75.0" y1="0.0" x2="-215.0" y2="0.0" stroke="#ffffff" stroke-width="4" stroke-opacity="0.85"/>
+    <line x1="-60.7" y1="-32.3" x2="-173.9" y2="-91.1" stroke="url(#rim)" stroke-width="26" stroke-linecap="round"/>
+    <line x1="-60.7" y1="-32.3" x2="-173.9" y2="-91.1" stroke="#ffffff" stroke-width="4" stroke-opacity="0.85"/>
+    <line x1="-23.2" y1="-52.3" x2="-66.4" y2="-147.4" stroke="url(#rim)" stroke-width="26" stroke-linecap="round"/>
+    <line x1="-23.2" y1="-52.3" x2="-66.4" y2="-147.4" stroke="#ffffff" stroke-width="4" stroke-opacity="0.85"/>
+    <line x1="23.2" y1="-52.3" x2="66.4" y2="-147.4" stroke="url(#rim)" stroke-width="26" stroke-linecap="round"/>
+    <line x1="23.2" y1="-52.3" x2="66.4" y2="-147.4" stroke="#ffffff" stroke-width="4" stroke-opacity="0.85"/>
+    <line x1="60.7" y1="-32.3" x2="173.9" y2="-91.1" stroke="url(#rim)" stroke-width="26" stroke-linecap="round"/>
+    <line x1="60.7" y1="-32.3" x2="173.9" y2="-91.1" stroke="#ffffff" stroke-width="4" stroke-opacity="0.85"/>
+
+    <!-- Center Hub -->
+    <ellipse cx="0" cy="0" rx="85" ry="62" fill="url(#hub)" stroke="#f8fafc" stroke-width="4"/>
+    <ellipse cx="0" cy="0" rx="40" ry="28" fill="#0f172a" stroke="#38bdf8" stroke-width="3"/>
+    <ellipse cx="62.0" cy="0.0" rx="9" ry="7" fill="#0f172a" stroke="#cbd5e1" stroke-width="2"/>
+    <ellipse cx="19.2" cy="41.8" rx="9" ry="7" fill="#0f172a" stroke="#cbd5e1" stroke-width="2"/>
+    <ellipse cx="-50.2" cy="25.9" rx="9" ry="7" fill="#0f172a" stroke="#cbd5e1" stroke-width="2"/>
+    <ellipse cx="-50.2" cy="-25.9" rx="9" ry="7" fill="#0f172a" stroke="#cbd5e1" stroke-width="2"/>
+    <ellipse cx="19.2" cy="-41.8" rx="9" ry="7" fill="#0f172a" stroke="#cbd5e1" stroke-width="2"/>
+
+  </g>
+
+  <!-- AutoCAD Bottom Bar -->
+  <rect y="1044" width="1920" height="36" fill="#16181d"/>
+  <rect x="15" y="1049" width="60" height="26" fill="#2d333b" rx="2"/>
+  <text x="28" y="1066" fill="#ffffff" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold">Model</text>
+  <text x="90" y="1066" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11">Layout1</text>
+  <text x="150" y="1066" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11">Layout2</text>
+  <text x="260" y="1066" fill="#cbd5e1" font-family="Consolas, monospace" font-size="12">Type a command</text>
+  <text x="1750" y="1066" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold">MODEL</text>
+</svg>
