@@ -7,7 +7,7 @@ interface TataCertificateViewProps {
 }
 
 export const TataCertificateView: React.FC<TataCertificateViewProps> = ({
-  imageSrc = './Screenshot (452).png',
+  imageSrc = '/Screenshot (452).png',
   className = ''
 }) => {
   return (
@@ -15,7 +15,7 @@ export const TataCertificateView: React.FC<TataCertificateViewProps> = ({
       {/* Certificate Frame Display */}
       <div className="relative w-full bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xl flex flex-col items-center justify-center p-2 sm:p-4">
         <img
-          src={imageSrc || './Screenshot (452).png'}
+          src={imageSrc || ' /Screenshot (452).png'}
           alt="Data Visualisation: Empowering Business with Effective Insights - Suman Das - Tata & Forage Certificate"
           className="w-full h-auto max-h-[75vh] object-contain rounded filter contrast-[1.01]"
         />
