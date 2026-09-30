@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Box, Maximize2, Upload, CheckCircle2, X, ZoomIn, Eye, Sparkles } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Box, Maximize2, X, Eye, Sparkles } from 'lucide-react';
 
 interface CadModel {
   id: string;
@@ -59,8 +59,6 @@ export const Cad3dDrawings: React.FC = () => {
   });
 
   const [activeModalModel, setActiveModalModel] = useState<CadModel | null>(null);
-  const [uploadTargetId, setUploadTargetId] = useState<string | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Load any user-uploaded raw screenshots from localStorage
   useEffect(() => {
@@ -74,46 +72,8 @@ export const Cad3dDrawings: React.FC = () => {
     setImages((prev) => ({ ...prev, ...loaded }));
   }, []);
 
-  const handleFileUpload = (modelId: string, file: File) => {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const dataUrl = e.target?.result as string;
-      if (dataUrl) {
-        const model = CAD_MODELS.find((m) => m.id === modelId);
-        if (model) {
-          try {
-            localStorage.setItem(model.storageKey, dataUrl);
-          } catch {
-            // storage quota limit fallback
-          }
-        }
-        setImages((prev) => ({ ...prev, [modelId]: dataUrl }));
-      }
-    };
-    reader.readAsDataURL(file);
-  };
-
-  const triggerUpload = (modelId: string) => {
-    setUploadTargetId(modelId);
-    fileInputRef.current?.click();
-  };
-
   return (
     <section id="cad-drawings" className="py-20 lg:py-28 bg-[#0e1117] text-white relative overflow-hidden border-b border-slate-800">
-      {/* Hidden File Input for Image Upload */}
-      <input
-        ref={fileInputRef}
-        type="file"
-        accept="image/png,image/jpeg,image/webp,image/svg+xml"
-        className="hidden"
-        onChange={(e) => {
-          if (e.target.files && e.target.files[0] && uploadTargetId) {
-            handleFileUpload(uploadTargetId, e.target.files[0]);
-            setUploadTargetId(null);
-          }
-        }}
-      />
-
       {/* Background CAD Subtle Drafting Grid */}
       <div
         className="absolute inset-0 opacity-15 pointer-events-none"
@@ -171,15 +131,6 @@ export const Cad3dDrawings: React.FC = () => {
 
                   {/* Top Overlay Controls */}
                   <div className="absolute top-3 right-3 flex items-center gap-2">
-                    <button
-                      onClick={() => triggerUpload(model.id)}
-                      title="Upload or replace screenshot image"
-                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/80 hover:bg-black text-white text-[11px] font-mono border border-slate-700 shadow-md backdrop-blur-sm cursor-pointer transition-colors"
-                    >
-                      <Upload className="w-3 h-3 text-cyan-400" />
-                      <span>Upload Image</span>
-                    </button>
-
                     <button
                       onClick={() => setActiveModalModel(model)}
                       className="p-1.5 rounded-lg bg-black/80 hover:bg-black text-cyan-300 hover:text-white border border-cyan-500/40 shadow-md backdrop-blur-sm cursor-pointer transition-colors"
@@ -241,19 +192,15 @@ export const Cad3dDrawings: React.FC = () => {
 
                   {/* Card Actions */}
                   <div className="pt-4 border-t border-slate-800 flex items-center justify-between">
-                    <button
-                      onClick={() => triggerUpload(model.id)}
-                      className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-cyan-300 transition-colors cursor-pointer font-mono"
-                    >
-                      <Upload className="w-3.5 h-3.5" />
-                      <span>Upload as-is</span>
-                    </button>
+                    <span className="text-xs font-mono text-slate-500">
+                      Solid Model · {model.fileName}
+                    </span>
 
                     <button
                       onClick={() => setActiveModalModel(model)}
                       className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors cursor-pointer font-mono"
                     >
-                      <span>Inspect Image</span>
+                      <span>Inspect Drawing</span>
                       <Eye className="w-3.5 h-3.5" />
                     </button>
                   </div>
@@ -298,14 +245,6 @@ export const Cad3dDrawings: React.FC = () => {
               </div>
 
               <div className="flex items-center gap-2">
-                <button
-                  onClick={() => triggerUpload(activeModalModel.id)}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-mono transition-colors cursor-pointer"
-                >
-                  <Upload className="w-3.5 h-3.5" />
-                  <span>Upload Image</span>
-                </button>
-
                 <button
                   onClick={() => setActiveModalModel(null)}
                   className="p-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors cursor-pointer"

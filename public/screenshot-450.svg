@@ -1,155 +1,288 @@
 <svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#181a1f"/>
-      <stop offset="100%" stop-color="#1c2027"/>
-    </linearGradient>
-    <linearGradient id="tire" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#3e434f"/>
-      <stop offset="35%" stop-color="#242730"/>
-      <stop offset="70%" stop-color="#181a20"/>
-      <stop offset="100%" stop-color="#101216"/>
-    </linearGradient>
-    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#f8fafc"/>
+    <!-- Background Canvas Gradients -->
+    <radialGradient id="acadBg" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#282f3a"/>
+      <stop offset="60%" stop-color="#1f242d"/>
+      <stop offset="100%" stop-color="#16191f"/>
+    </radialGradient>
+
+    <!-- Metallic Alloy Rim Gradients -->
+    <linearGradient id="alloyHighlight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
       <stop offset="25%" stop-color="#e2e8f0"/>
-      <stop offset="60%" stop-color="#94a3b8"/>
-      <stop offset="100%" stop-color="#64748b"/>
-    </linearGradient>
-    <linearGradient id="hub" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#cbd5e1"/>
+      <stop offset="55%" stop-color="#94a3b8"/>
+      <stop offset="85%" stop-color="#64748b"/>
       <stop offset="100%" stop-color="#475569"/>
     </linearGradient>
-    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
-      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#2a303c" stroke-width="0.7"/>
-    </pattern>
+
+    <linearGradient id="barrelDepth" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#cbd5e1"/>
+      <stop offset="30%" stop-color="#94a3b8"/>
+      <stop offset="70%" stop-color="#475569"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+
+    <linearGradient id="rubberTire" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#474d58"/>
+      <stop offset="35%" stop-color="#333842"/>
+      <stop offset="70%" stop-color="#21252d"/>
+      <stop offset="100%" stop-color="#14171c"/>
+    </linearGradient>
+
+    <!-- Tread Notch Pattern -->
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="8" stdDeviation="12" flood-color="#050608" flood-opacity="0.75"/>
+    </filter>
   </defs>
 
-  <!-- Background -->
-  <rect width="1920" height="1080" fill="url(#bg)"/>
-  <rect width="1920" height="1040" fill="url(#grid)" opacity="0.8"/>
+  <!-- Canvas Background -->
+  <rect width="1920" height="1080" fill="url(#acadBg)"/>
 
-  <!-- AutoCAD Header -->
-  <rect width="1920" height="36" fill="#131518"/>
-  <rect x="10" y="8" width="20" height="20" rx="3" fill="#e01a22"/>
-  <text x="14" y="23" fill="#ffffff" font-family="sans-serif" font-size="13" font-weight="bold">A</text>
-  <text x="40" y="23" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="12">Autodesk AutoCAD 2027 - EDUCATION (NON COMMERCIAL)  Drawing3 by suman.dwg</text>
-  <text x="1650" y="23" fill="#cbd5e1" font-family="Segoe UI, sans-serif" font-size="12">hariharadasa074</text>
-
-  <!-- Viewport HUD -->
-  <text x="15" y="60" fill="#cbd5e1" font-family="Consolas, monospace" font-size="13">[-][Custom View][Realistic (Fast)]</text>
-
-  <!-- ViewCube (Top Right) -->
-  <g transform="translate(1820, 110) rotate(12)">
-    <polygon points="0,-40 38,-20 0,0 -38,-20" fill="#525b68" stroke="#3b424d" stroke-width="1.5"/>
-    <polygon points="-38,-20 0,0 0,40 -38,20" fill="#3b424d" stroke="#2d333b" stroke-width="1.5"/>
-    <polygon points="0,0 38,-20 38,20 0,40" fill="#444c58" stroke="#2d333b" stroke-width="1.5"/>
-    <text x="-12" y="-15" fill="#f1f5f9" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold">TOP</text>
-    <text x="-18" y="22" fill="#f1f5f9" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold">FRONT</text>
-    <text x="6" y="22" fill="#f1f5f9" font-family="Segoe UI, sans-serif" font-size="9" font-weight="bold">RIGHT</text>
-  </g>
-  <text x="1810" y="180" fill="#94a3b8" font-family="Consolas, monospace" font-size="10">WCS</text>
-
-  <!-- UCS Icon (Bottom Left) -->
-  <g transform="translate(45, 960)">
-    <line x1="0" y1="0" x2="35" y2="25" stroke="#ef4444" stroke-width="3"/>
-    <text x="38" y="32" fill="#ef4444" font-family="Consolas, monospace" font-weight="bold" font-size="12">X</text>
-    <line x1="0" y1="0" x2="30" y2="-25" stroke="#22c55e" stroke-width="3"/>
-    <text x="32" y="-28" fill="#22c55e" font-family="Consolas, monospace" font-weight="bold" font-size="12">Y</text>
-    <line x1="0" y1="0" x2="0" y2="-40" stroke="#3b82f6" stroke-width="3"/>
-    <text x="-4" y="-45" fill="#3b82f6" font-family="Consolas, monospace" font-weight="bold" font-size="12">Z</text>
+  <!-- AutoCAD 3D Isometric Ground Grid -->
+  <g opacity="0.35" stroke="#384353" stroke-width="1">
+    <!-- Perspective lines receding to vanishing points -->
+    <path d="M 0 540 L 1920 540 M 0 620 L 1920 620 M 0 710 L 1920 710 M 0 810 L 1920 810 M 0 920 L 1920 920 M 0 1040 L 1920 1040" />
+    <path d="M 200 1080 L 760 300 M 450 1080 L 840 300 M 700 1080 L 920 300 M 950 1080 L 1000 300 M 1200 1080 L 1080 300 M 1450 1080 L 1160 300 M 1700 1080 L 1240 300" stroke-opacity="0.4" />
+    <path d="M 100 300 L 1600 1080 M 300 300 L 1750 1080 M 500 300 L 1900 1080 M -100 300 L 1400 1080" stroke-opacity="0.4" />
   </g>
 
-  <!-- 3D Wheel Model -->
-  <g transform="translate(960, 490) rotate(-24) skewX(-22)">
-    <!-- Shadow -->
-    <ellipse cx="25" cy="30" rx="360" ry="260" fill="#0b0d11" opacity="0.6"/>
-    <!-- Outer Tire Torus -->
-    <ellipse cx="0" cy="0" rx="350" ry="250" fill="url(#tire)" stroke="#474d5a" stroke-width="5"/>
-    <ellipse cx="0" cy="0" rx="325" ry="230" fill="#1b1e25" stroke="#2e333d" stroke-width="3"/>
+  <!-- AutoCAD Top Title Bar -->
+  <rect width="1920" height="38" fill="#14171c"/>
+  <rect x="12" y="9" width="20" height="20" rx="3" fill="#e01a22"/>
+  <text x="16" y="24" fill="#ffffff" font-family="Segoe UI, sans-serif" font-size="14" font-weight="bold">A</text>
+  <text x="44" y="24" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="12.5">Autodesk AutoCAD 2027 - EDUCATION (NON COMMERCIAL)  Drawing3 by suman.dwg</text>
+  
+  <!-- Right Header Info -->
+  <rect x="1260" y="8" width="220" height="22" rx="3" fill="#1e242d" stroke="#333b47" stroke-width="1"/>
+  <text x="1275" y="23" fill="#64748b" font-family="Segoe UI, sans-serif" font-size="11.5">Type a keyword or phrase</text>
+  <circle cx="1500" cy="19" r="8" fill="#38bdf8"/>
+  <text x="1516" y="23" fill="#cbd5e1" font-family="Segoe UI, sans-serif" font-size="12">hariharadasa074</text>
 
-    <!-- 3D Tread Marks along circumference -->
-    <line x1="328.0" y1="0.0" x2="348.0" y2="0.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="323.0" y1="40.3" x2="342.7" y2="43.1" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="308.2" y1="79.3" x2="327.0" y2="84.8" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="284.1" y1="116.0" x2="301.4" y2="124.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="251.3" y1="149.1" x2="266.6" y2="159.4" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="210.8" y1="177.7" x2="223.7" y2="190.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="164.0" y1="200.9" x2="174.0" y2="214.8" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="112.2" y1="218.0" x2="119.0" y2="233.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="57.0" y1="228.5" x2="60.4" y2="244.2" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="0.0" y1="232.0" x2="0.0" y2="248.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="-57.0" y1="228.5" x2="-60.4" y2="244.2" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="-112.2" y1="218.0" x2="-119.0" y2="233.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="-164.0" y1="200.9" x2="-174.0" y2="214.8" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="-210.8" y1="177.7" x2="-223.7" y2="190.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="-251.3" y1="149.1" x2="-266.6" y2="159.4" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="-284.1" y1="116.0" x2="-301.4" y2="124.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="-308.2" y1="79.3" x2="-327.0" y2="84.8" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="-323.0" y1="40.3" x2="-342.7" y2="43.1" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="-328.0" y1="0.0" x2="-348.0" y2="0.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="-323.0" y1="-40.3" x2="-342.7" y2="-43.1" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="-308.2" y1="-79.3" x2="-327.0" y2="-84.8" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="-284.1" y1="-116.0" x2="-301.4" y2="-124.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="-251.3" y1="-149.1" x2="-266.6" y2="-159.4" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="-210.8" y1="-177.7" x2="-223.7" y2="-190.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="-164.0" y1="-200.9" x2="-174.0" y2="-214.8" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="-112.2" y1="-218.0" x2="-119.0" y2="-233.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="-57.0" y1="-228.5" x2="-60.4" y2="-244.2" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="-0.0" y1="-232.0" x2="-0.0" y2="-248.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="57.0" y1="-228.5" x2="60.4" y2="-244.2" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="112.2" y1="-218.0" x2="119.0" y2="-233.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="164.0" y1="-200.9" x2="174.0" y2="-214.8" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="210.8" y1="-177.7" x2="223.7" y2="-190.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="251.3" y1="-149.1" x2="266.6" y2="-159.4" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="284.1" y1="-116.0" x2="301.4" y2="-124.0" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="308.2" y1="-79.3" x2="327.0" y2="-84.8" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="323.0" y1="-40.3" x2="342.7" y2="-43.1" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+  <!-- Viewport Overlay HUD (Top-Left) -->
+  <text x="16" y="65" fill="#cbd5e1" font-family="Consolas, monospace" font-size="13.5">[-][Custom View][Realistic (Fast)]</text>
 
-    <!-- Rim Bead & Flange -->
-    <ellipse cx="0" cy="0" rx="250" ry="180" fill="url(#rim)" stroke="#f8fafc" stroke-width="4"/>
-    <ellipse cx="0" cy="0" rx="230" ry="165" fill="#334155" stroke="#475569" stroke-width="3"/>
-    <ellipse cx="0" cy="0" rx="215" ry="155" fill="#1e293b"/>
+  <!-- ViewCube (Top-Right) -->
+  <g transform="translate(1835, 115) scale(0.95)">
+    <!-- Compass Ring -->
+    <ellipse cx="0" cy="0" rx="46" ry="46" fill="none" stroke="#475263" stroke-width="1.5" stroke-dasharray="3 5"/>
+    <text x="-4" y="-36" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="9" font-weight="bold">N</text>
+    <text x="36" y="3" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="9" font-weight="bold">E</text>
+    <text x="-4" y="42" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="9" font-weight="bold">S</text>
+    <text x="-42" y="3" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="9" font-weight="bold">W</text>
 
-    <!-- 10 Double Spokes -->
-    <line x1="75.0" y1="0.0" x2="215.0" y2="0.0" stroke="url(#rim)" stroke-width="26" stroke-linecap="round"/>
-    <line x1="75.0" y1="0.0" x2="215.0" y2="0.0" stroke="#ffffff" stroke-width="4" stroke-opacity="0.85"/>
-    <line x1="60.7" y1="32.3" x2="173.9" y2="91.1" stroke="url(#rim)" stroke-width="26" stroke-linecap="round"/>
-    <line x1="60.7" y1="32.3" x2="173.9" y2="91.1" stroke="#ffffff" stroke-width="4" stroke-opacity="0.85"/>
-    <line x1="23.2" y1="52.3" x2="66.4" y2="147.4" stroke="url(#rim)" stroke-width="26" stroke-linecap="round"/>
-    <line x1="23.2" y1="52.3" x2="66.4" y2="147.4" stroke="#ffffff" stroke-width="4" stroke-opacity="0.85"/>
-    <line x1="-23.2" y1="52.3" x2="-66.4" y2="147.4" stroke="url(#rim)" stroke-width="26" stroke-linecap="round"/>
-    <line x1="-23.2" y1="52.3" x2="-66.4" y2="147.4" stroke="#ffffff" stroke-width="4" stroke-opacity="0.85"/>
-    <line x1="-60.7" y1="32.3" x2="-173.9" y2="91.1" stroke="url(#rim)" stroke-width="26" stroke-linecap="round"/>
-    <line x1="-60.7" y1="32.3" x2="-173.9" y2="91.1" stroke="#ffffff" stroke-width="4" stroke-opacity="0.85"/>
-    <line x1="-75.0" y1="0.0" x2="-215.0" y2="0.0" stroke="url(#rim)" stroke-width="26" stroke-linecap="round"/>
-    <line x1="-75.0" y1="0.0" x2="-215.0" y2="0.0" stroke="#ffffff" stroke-width="4" stroke-opacity="0.85"/>
-    <line x1="-60.7" y1="-32.3" x2="-173.9" y2="-91.1" stroke="url(#rim)" stroke-width="26" stroke-linecap="round"/>
-    <line x1="-60.7" y1="-32.3" x2="-173.9" y2="-91.1" stroke="#ffffff" stroke-width="4" stroke-opacity="0.85"/>
-    <line x1="-23.2" y1="-52.3" x2="-66.4" y2="-147.4" stroke="url(#rim)" stroke-width="26" stroke-linecap="round"/>
-    <line x1="-23.2" y1="-52.3" x2="-66.4" y2="-147.4" stroke="#ffffff" stroke-width="4" stroke-opacity="0.85"/>
-    <line x1="23.2" y1="-52.3" x2="66.4" y2="-147.4" stroke="url(#rim)" stroke-width="26" stroke-linecap="round"/>
-    <line x1="23.2" y1="-52.3" x2="66.4" y2="-147.4" stroke="#ffffff" stroke-width="4" stroke-opacity="0.85"/>
-    <line x1="60.7" y1="-32.3" x2="173.9" y2="-91.1" stroke="url(#rim)" stroke-width="26" stroke-linecap="round"/>
-    <line x1="60.7" y1="-32.3" x2="173.9" y2="-91.1" stroke="#ffffff" stroke-width="4" stroke-opacity="0.85"/>
-
-    <!-- Center Hub -->
-    <ellipse cx="0" cy="0" rx="85" ry="62" fill="url(#hub)" stroke="#f8fafc" stroke-width="4"/>
-    <ellipse cx="0" cy="0" rx="40" ry="28" fill="#0f172a" stroke="#38bdf8" stroke-width="3"/>
-    <ellipse cx="62.0" cy="0.0" rx="9" ry="7" fill="#0f172a" stroke="#cbd5e1" stroke-width="2"/>
-    <ellipse cx="19.2" cy="41.8" rx="9" ry="7" fill="#0f172a" stroke="#cbd5e1" stroke-width="2"/>
-    <ellipse cx="-50.2" cy="25.9" rx="9" ry="7" fill="#0f172a" stroke="#cbd5e1" stroke-width="2"/>
-    <ellipse cx="-50.2" cy="-25.9" rx="9" ry="7" fill="#0f172a" stroke="#cbd5e1" stroke-width="2"/>
-    <ellipse cx="19.2" cy="-41.8" rx="9" ry="7" fill="#0f172a" stroke="#cbd5e1" stroke-width="2"/>
-
+    <!-- Isometric ViewCube -->
+    <polygon points="0,-36 34,-18 0,0 -34,-18" fill="#64748b" stroke="#333f50" stroke-width="1.5"/>
+    <polygon points="-34,-18 0,0 0,36 -34,18" fill="#475569" stroke="#333f50" stroke-width="1.5"/>
+    <polygon points="0,0 34,-18 34,18 0,36" fill="#526074" stroke="#333f50" stroke-width="1.5"/>
+    <text x="-9" y="-14" fill="#ffffff" font-family="Segoe UI, sans-serif" font-size="9.5" font-weight="bold">TOP</text>
+    <text x="-16" y="20" fill="#ffffff" font-family="Segoe UI, sans-serif" font-size="9" font-weight="bold">FRONT</text>
+    <text x="4" y="20" fill="#ffffff" font-family="Segoe UI, sans-serif" font-size="8.5" font-weight="bold">RIGHT</text>
+    
+    <!-- WCS Badge -->
+    <rect x="-16" y="52" width="32" height="14" rx="3" fill="#2d3748"/>
+    <text x="-10" y="63" fill="#94a3b8" font-family="Consolas, monospace" font-size="9">WCS</text>
   </g>
 
-  <!-- AutoCAD Bottom Bar -->
-  <rect y="1044" width="1920" height="36" fill="#16181d"/>
-  <rect x="15" y="1049" width="60" height="26" fill="#2d333b" rx="2"/>
-  <text x="28" y="1066" fill="#ffffff" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold">Model</text>
-  <text x="90" y="1066" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11">Layout1</text>
-  <text x="150" y="1066" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11">Layout2</text>
-  <text x="260" y="1066" fill="#cbd5e1" font-family="Consolas, monospace" font-size="12">Type a command</text>
-  <text x="1750" y="1066" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold">MODEL</text>
+  <!-- UCS Coordinate Triad (Bottom-Left) -->
+  <g transform="translate(60, 950)">
+    <!-- Origin marker -->
+    <circle cx="0" cy="0" r="3" fill="#ffffff"/>
+    <!-- X Axis (Red) -->
+    <line x1="0" y1="0" x2="42" y2="28" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
+    <text x="46" y="34" fill="#ef4444" font-family="Consolas, monospace" font-weight="bold" font-size="13">X</text>
+    <!-- Y Axis (Green) -->
+    <line x1="0" y1="0" x2="38" y2="-28" stroke="#22c55e" stroke-width="3" stroke-linecap="round"/>
+    <text x="42" y="-30" fill="#22c55e" font-family="Consolas, monospace" font-weight="bold" font-size="13">Y</text>
+    <!-- Z Axis (Blue) -->
+    <line x1="0" y1="0" x2="0" y2="-48" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/>
+    <text x="-5" y="-54" fill="#3b82f6" font-family="Consolas, monospace" font-weight="bold" font-size="13">Z</text>
+  </g>
+
+  <!-- 3D WHEEL & TIRE ASSEMBLY (Matching Screenshot (450).png) -->
+  <!-- Centered at (960, 520), tilted in 3D perspective -->
+  <g transform="translate(960, 520) rotate(-18) skewY(8)" filter="url(#softGlow)">
+    
+    <!-- Deep Drop Shadow -->
+    <ellipse cx="30" cy="40" rx="360" ry="260" fill="#090b0e" opacity="0.8"/>
+
+    <!-- 1. Outer Black Pneumatic Tire (Torus Profile) -->
+    <ellipse cx="0" cy="0" rx="355" ry="255" fill="url(#rubberTire)" stroke="#525b68" stroke-width="6"/>
+    <ellipse cx="0" cy="0" rx="340" ry="242" fill="#262b35" stroke="#1f232b" stroke-width="2"/>
+    <ellipse cx="0" cy="0" rx="275" ry="195" fill="#181c22" stroke="#333842" stroke-width="3"/>
+
+    <!-- 2. Realistic Directional Tread Grooves (Chevron / Sipe Pattern) -->
+    <g stroke="#cbd5e1" stroke-width="5" stroke-linecap="round" opacity="0.95">
+      <!-- Upper perimeter tread cuts -->
+      <line x1="0" y1="-250" x2="24" y2="-238"/>
+      <line x1="45" y1="-246" x2="68" y2="-232"/>
+      <line x1="90" y1="-238" x2="112" y2="-222"/>
+      <line x1="135" y1="-224" x2="155" y2="-206"/>
+      <line x1="180" y1="-204" x2="198" y2="-184"/>
+      <line x1="220" y1="-178" x2="236" y2="-156"/>
+      <line x1="255" y1="-146" x2="268" y2="-122"/>
+      <line x1="285" y1="-110" x2="295" y2="-84"/>
+      <line x1="305" y1="-70" x2="312" y2="-44"/>
+      <line x1="318" y1="-28" x2="320" y2="-2"/>
+      <line x1="320" y1="14" x2="318" y2="40"/>
+      <line x1="312" y1="56" x2="305" y2="82"/>
+      <line x1="295" y1="98" x2="285" y2="124"/>
+      <line x1="268" y1="138" x2="255" y2="162"/>
+      <line x1="236" y1="172" x2="220" y2="194"/>
+      <line x1="198" y1="200" x2="180" y2="220"/>
+      <line x1="155" y1="222" x2="135" y2="240"/>
+      <line x1="112" y1="238" x2="90" y2="254"/>
+      <line x1="68" y1="248" x2="45" y2="262"/>
+      <line x1="24" y1="254" x2="0" y2="266"/>
+
+      <!-- Lower perimeter reverse tread cuts -->
+      <line x1="-45" y1="-246" x2="-24" y2="-238"/>
+      <line x1="-90" y1="-238" x2="-68" y2="-232"/>
+      <line x1="-135" y1="-224" x2="-112" y2="-222"/>
+      <line x1="-180" y1="-204" x2="-155" y2="-206"/>
+      <line x1="-220" y1="-178" x2="-198" y2="-184"/>
+      <line x1="-255" y1="-146" x2="-236" y2="-156"/>
+      <line x1="-285" y1="-110" x2="-268" y2="-122"/>
+      <line x1="-305" y1="-70" x2="-295" y2="-84"/>
+      <line x1="-318" y1="-28" x2="-312" y2="-44"/>
+      <line x1="-320" y1="14" x2="-318" y2="-2"/>
+      <line x1="-312" y1="56" x2="-318" y2="40"/>
+      <line x1="-295" y1="98" x2="-305" y2="82"/>
+      <line x1="-268" y1="138" x2="-285" y2="124"/>
+      <line x1="-236" y1="172" x2="-255" y2="162"/>
+      <line x1="-198" y1="200" x2="-220" y2="194"/>
+      <line x1="-155" y1="222" x2="-180" y2="220"/>
+      <line x1="-112" y1="238" x2="-135" y2="240"/>
+      <line x1="-68" y1="248" x2="-90" y2="254"/>
+      <line x1="-24" y1="254" x2="-45" y2="262"/>
+    </g>
+
+    <!-- 3. Alloy Wheel Rim Outer Barrel & Drop Well -->
+    <ellipse cx="0" cy="0" rx="270" ry="190" fill="url(#barrelDepth)" stroke="#ffffff" stroke-width="4"/>
+    <ellipse cx="0" cy="0" rx="252" ry="176" fill="#3a4454" stroke="#64748b" stroke-width="2"/>
+    <ellipse cx="0" cy="0" rx="235" ry="164" fill="#1e2530" stroke="#0f172a" stroke-width="3"/>
+
+    <!-- Rim Flange Inner Lip -->
+    <ellipse cx="0" cy="0" rx="228" ry="158" fill="none" stroke="#94a3b8" stroke-width="2"/>
+
+    <!-- 4. 10 Radial Split-Spokes with Center Lightening Pockets -->
+    <!-- 10 Spokes around 360 deg: 0, 36, 72, 108, 144, 180, 216, 252, 288, 324 -->
+    <!-- Spoke 1 (0 deg) -->
+    <path d="M 70 -12 L 225 -20 L 225 20 L 70 12 Z" fill="url(#alloyHighlight)" stroke="#cbd5e1" stroke-width="1.5"/>
+    <ellipse cx="145" cy="0" rx="36" ry="7" fill="#141820" stroke="#64748b" stroke-width="1.5"/>
+
+    <!-- Spoke 2 (36 deg) -->
+    <path d="M 55 45 L 175 142 L 150 168 L 38 65 Z" fill="url(#alloyHighlight)" stroke="#cbd5e1" stroke-width="1.5"/>
+    <ellipse cx="110" cy="108" rx="35" ry="7" transform="rotate(38 110 108)" fill="#141820" stroke="#64748b" stroke-width="1.5"/>
+
+    <!-- Spoke 3 (72 deg) -->
+    <path d="M 18 68 L 62 215 L 28 222 L -8 72 Z" fill="url(#alloyHighlight)" stroke="#cbd5e1" stroke-width="1.5"/>
+    <ellipse cx="38" cy="148" rx="35" ry="7" transform="rotate(74 38 148)" fill="#141820" stroke="#64748b" stroke-width="1.5"/>
+
+    <!-- Spoke 4 (108 deg) -->
+    <path d="M -30 65 L -85 210 L -120 198 L -55 58 Z" fill="url(#alloyHighlight)" stroke="#cbd5e1" stroke-width="1.5"/>
+    <ellipse cx="-72" cy="138" rx="35" ry="7" transform="rotate(110 -72 138)" fill="#141820" stroke="#64748b" stroke-width="1.5"/>
+
+    <!-- Spoke 5 (144 deg) -->
+    <path d="M -60 35 L -195 110 L -215 82 L -72 15 Z" fill="url(#alloyHighlight)" stroke="#cbd5e1" stroke-width="1.5"/>
+    <ellipse cx="-140" cy="65" rx="35" ry="7" transform="rotate(146 -140 65)" fill="#141820" stroke="#64748b" stroke-width="1.5"/>
+
+    <!-- Spoke 6 (180 deg) -->
+    <path d="M -70 -12 L -225 -20 L -225 20 L -70 12 Z" fill="url(#alloyHighlight)" stroke="#cbd5e1" stroke-width="1.5"/>
+    <ellipse cx="-145" cy="0" rx="36" ry="7" fill="#141820" stroke="#64748b" stroke-width="1.5"/>
+
+    <!-- Spoke 7 (216 deg) -->
+    <path d="M -55 -45 L -175 -142 L -150 -168 L -38 -65 Z" fill="url(#alloyHighlight)" stroke="#cbd5e1" stroke-width="1.5"/>
+    <ellipse cx="-110" cy="-108" rx="35" ry="7" transform="rotate(38 -110 -108)" fill="#141820" stroke="#64748b" stroke-width="1.5"/>
+
+    <!-- Spoke 8 (252 deg) -->
+    <path d="M -18 -68 L -62 -215 L -28 -222 L 8 -72 Z" fill="url(#alloyHighlight)" stroke="#cbd5e1" stroke-width="1.5"/>
+    <ellipse cx="-38" cy="-148" rx="35" ry="7" transform="rotate(74 -38 -148)" fill="#141820" stroke="#64748b" stroke-width="1.5"/>
+
+    <!-- Spoke 9 (288 deg) -->
+    <path d="M 30 -65 L 85 -210 L 120 -198 L 55 -58 Z" fill="url(#alloyHighlight)" stroke="#cbd5e1" stroke-width="1.5"/>
+    <ellipse cx="72" cy="-138" rx="35" ry="7" transform="rotate(110 72 -138)" fill="#141820" stroke="#64748b" stroke-width="1.5"/>
+
+    <!-- Spoke 10 (324 deg) -->
+    <path d="M 60 -35 L 195 -110 L 215 -82 L 72 -15 Z" fill="url(#alloyHighlight)" stroke="#cbd5e1" stroke-width="1.5"/>
+    <ellipse cx="140" cy="-65" rx="35" ry="7" transform="rotate(146 140 -65)" fill="#141820" stroke="#64748b" stroke-width="1.5"/>
+
+    <!-- 5. Center Hub Boss with Specular Highlight -->
+    <ellipse cx="0" cy="0" rx="88" ry="62" fill="url(#alloyHighlight)" stroke="#ffffff" stroke-width="3"/>
+    <ellipse cx="0" cy="0" rx="72" ry="50" fill="#475569" stroke="#94a3b8" stroke-width="1.5"/>
+
+    <!-- Center Axle Bore (Through Hole) -->
+    <ellipse cx="0" cy="0" rx="34" ry="24" fill="#090d14" stroke="#38bdf8" stroke-width="2"/>
+    <ellipse cx="0" cy="0" rx="28" ry="20" fill="#040608"/>
+
+    <!-- 5 Lug Nut Mounting Recesses (PCD 5-Hole Pattern) -->
+    <ellipse cx="52" cy="0" rx="10" ry="7" fill="#090d14" stroke="#e2e8f0" stroke-width="2"/>
+    <circle cx="52" cy="0" r="4" fill="#64748b"/>
+
+    <ellipse cx="16" cy="40" rx="10" ry="7" fill="#090d14" stroke="#e2e8f0" stroke-width="2"/>
+    <circle cx="16" cy="40" r="4" fill="#64748b"/>
+
+    <ellipse cx="-42" cy="25" rx="10" ry="7" fill="#090d14" stroke="#e2e8f0" stroke-width="2"/>
+    <circle cx="-42" cy="25" r="4" fill="#64748b"/>
+
+    <ellipse cx="-42" cy="-25" rx="10" ry="7" fill="#090d14" stroke="#e2e8f0" stroke-width="2"/>
+    <circle cx="-42" cy="-25" r="4" fill="#64748b"/>
+
+    <ellipse cx="16" cy="-40" rx="10" ry="7" fill="#090d14" stroke="#e2e8f0" stroke-width="2"/>
+    <circle cx="16" cy="-40" r="4" fill="#64748b"/>
+
+    <!-- Subtle Rim Reflection Arc -->
+    <path d="M -180 -120 A 240 170 0 0 1 180 -120" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.6"/>
+  </g>
+
+  <!-- AutoCAD Bottom Command Line & Status Bar -->
+  <rect y="1038" width="1920" height="42" fill="#14171d"/>
+  
+  <!-- Model / Layout tabs -->
+  <g transform="translate(14, 1044)">
+    <rect x="0" y="0" width="70" height="28" fill="#2d3748" rx="2"/>
+    <text x="14" y="19" fill="#ffffff" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold">Model</text>
+
+    <text x="88" y="19" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="12">Layout1</text>
+    <text x="154" y="19" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="12">Layout2</text>
+    <text x="216" y="19" fill="#64748b" font-family="Segoe UI, sans-serif" font-size="14">+</text>
+  </g>
+
+  <!-- Command Line Prompt -->
+  <g transform="translate(260, 1044)">
+    <rect x="0" y="0" width="540" height="28" rx="3" fill="#1c212a" stroke="#2b323e" stroke-width="1"/>
+    <!-- Crosshairs icon -->
+    <path d="M 12 14 H 22 M 17 9 V 19" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="32" y="19" fill="#cbd5e1" font-family="Consolas, monospace" font-size="12.5">Type a command</text>
+  </g>
+
+  <!-- Right Status Toggles -->
+  <g transform="translate(1380, 1044)">
+    <rect x="0" y="0" width="60" height="28" fill="#1e293b" rx="2"/>
+    <text x="10" y="19" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="bold">MODEL</text>
+    
+    <!-- Grid on icon -->
+    <rect x="68" y="4" width="20" height="20" rx="2" fill="#0284c7"/>
+    <path d="M 72 9 H 84 M 72 14 H 84 M 72 19 H 84 M 75 6 V 22 M 80 6 V 22" stroke="#ffffff" stroke-width="1"/>
+
+    <!-- Ortho / Polar / OSnap toggles -->
+    <rect x="96" y="4" width="20" height="20" rx="2" fill="#0284c7"/>
+    <path d="M 100 19 L 106 9 L 112 19 Z" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+
+    <rect x="124" y="4" width="20" height="20" rx="2" fill="#0284c7"/>
+    <circle cx="134" cy="14" r="5" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+
+    <rect x="152" y="4" width="20" height="20" rx="2" fill="#0284c7"/>
+    <rect x="156" y="8" width="12" height="12" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+
+    <!-- Dynamic UCS -->
+    <rect x="180" y="4" width="20" height="20" rx="2" fill="#0284c7"/>
+    <path d="M 184 18 L 190 10 L 196 18" stroke="#ffffff" stroke-width="1.5" fill="none"/>
+
+    <!-- 3D Object Snap -->
+    <rect x="208" y="4" width="20" height="20" rx="2" fill="#0284c7"/>
+    <polygon points="218,8 224,14 218,20 212,14" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+    
+    <text x="240" y="19" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11">1:1</text>
+  </g>
 </svg>

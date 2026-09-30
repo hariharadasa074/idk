@@ -18,6 +18,8 @@ interface ResumeModalProps {
 export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
+  const avatarImg = typeof window !== 'undefined' ? localStorage.getItem('suman_portfolio_avatar') : null;
+
   const handlePrint = () => {
     window.print();
   };
@@ -58,41 +60,54 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
         <div className="overflow-y-auto flex-1 bg-white p-5 sm:p-10 md:p-12 text-slate-900 font-sans text-[13px] leading-normal selection:bg-blue-100">
           <div className="w-full max-w-full">
             
-            {/* 1. Header: Name & Contact Information (Centered) */}
-            <div className="text-center pb-3 border-b border-transparent">
-              <h1 className="text-2xl sm:text-3xl font-bold text-black tracking-tight mb-2">
-                Suman Das
-              </h1>
-              <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs sm:text-[13px] text-black">
-                <span>Purba Medinipur, West Bengal</span>
-                <span className="text-slate-400">|</span>
-                <span>+91-9832108788</span>
-                <span className="text-slate-400">|</span>
-                <a 
-                  href={`mailto:${personalInfo.email}`} 
-                  className="text-blue-600 hover:underline cursor-pointer"
-                >
-                  {personalInfo.email}
-                </a>
-                <span className="text-slate-400">|</span>
-                <a 
-                  href="https://www.linkedin.com/in/suman-das44/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="inline-flex items-center gap-1.5 text-[#0A66C2] hover:text-[#004182] transition-colors group cursor-pointer"
-                  title="LinkedIn: https://www.linkedin.com/in/suman-das44/"
-                  aria-label="LinkedIn profile"
-                >
-                  <svg 
-                    className="w-4 h-4 fill-[#0A66C2] group-hover:fill-[#004182] transition-colors inline-block shrink-0" 
-                    viewBox="0 0 24 24" 
-                    aria-hidden="true"
+            {/* 1. Header: Name & Contact Information */}
+            <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4 pb-3 border-b border-transparent">
+              <div className="text-center sm:text-left flex-1">
+                <h1 className="text-2xl sm:text-3xl font-bold text-black tracking-tight mb-2">
+                  Suman Das
+                </h1>
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-2 gap-y-1 text-xs sm:text-[13px] text-black">
+                  <span>Purba Medinipur, West Bengal</span>
+                  <span className="text-slate-400">|</span>
+                  <span>+91-9832108788</span>
+                  <span className="text-slate-400">|</span>
+                  <a 
+                    href={`mailto:${personalInfo.email}`} 
+                    className="text-blue-600 hover:underline cursor-pointer"
                   >
-                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
-                  </svg>
-                  <span className="text-blue-600 group-hover:underline font-medium">LinkedIn</span>
-                </a>
+                    {personalInfo.email}
+                  </a>
+                  <span className="text-slate-400">|</span>
+                  <a 
+                    href="https://www.linkedin.com/in/suman-das44/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="inline-flex items-center gap-1.5 text-[#0A66C2] hover:text-[#004182] transition-colors group cursor-pointer"
+                    title="LinkedIn: https://www.linkedin.com/in/suman-das44/"
+                    aria-label="LinkedIn profile"
+                  >
+                    <svg 
+                      className="w-4 h-4 fill-[#0A66C2] group-hover:fill-[#004182] transition-colors inline-block shrink-0" 
+                      viewBox="0 0 24 24" 
+                      aria-hidden="true"
+                    >
+                      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                    </svg>
+                    <span className="text-blue-600 group-hover:underline font-medium">LinkedIn</span>
+                  </a>
+                </div>
               </div>
+
+              {/* Passport Photo Slot (Matches Suman Photo For Resume Only) */}
+              {avatarImg && (
+                <div className="w-20 h-24 sm:w-22 sm:h-28 rounded-md border border-slate-300 p-0.5 bg-white shadow-xs shrink-0 overflow-hidden">
+                  <img
+                    src={avatarImg}
+                    alt="Suman Das Formal Photo"
+                    className="w-full h-full object-cover object-top rounded-sm"
+                  />
+                </div>
+              )}
             </div>
 
             {/* 2. Professional Summary */}

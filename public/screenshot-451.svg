@@ -1,128 +1,350 @@
 <svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#181a1f"/>
-      <stop offset="100%" stop-color="#1c2027"/>
+    <!-- AutoCAD Canvas Radial Background -->
+    <radialGradient id="acadBg451" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#282f3a"/>
+      <stop offset="60%" stop-color="#1f242d"/>
+      <stop offset="100%" stop-color="#16191f"/>
+    </radialGradient>
+
+    <!-- Shaded Gear Top Face Gradient -->
+    <linearGradient id="gearShadedTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e2e8f0"/>
+      <stop offset="30%" stop-color="#cbd5e1"/>
+      <stop offset="65%" stop-color="#94a3b8"/>
+      <stop offset="100%" stop-color="#64748b"/>
     </linearGradient>
-    <linearGradient id="gearTop" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#f8fafc"/>
-      <stop offset="35%" stop-color="#d1d5db"/>
-      <stop offset="70%" stop-color="#9ca3af"/>
-      <stop offset="100%" stop-color="#6b7280"/>
+
+    <!-- Gear Flank Extrusion Side Gradient -->
+    <linearGradient id="gearFlankShade" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#94a3b8"/>
+      <stop offset="40%" stop-color="#64748b"/>
+      <stop offset="85%" stop-color="#475569"/>
+      <stop offset="100%" stop-color="#334155"/>
     </linearGradient>
-    <linearGradient id="gearFlank" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#6b7280"/>
-      <stop offset="50%" stop-color="#4b5563"/>
-      <stop offset="100%" stop-color="#374151"/>
+
+    <!-- Annular Web Trough (Concave Recess) -->
+    <linearGradient id="webTrough" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#64748b"/>
+      <stop offset="40%" stop-color="#475569"/>
+      <stop offset="80%" stop-color="#94a3b8"/>
+      <stop offset="100%" stop-color="#cbd5e1"/>
     </linearGradient>
-    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
-      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#2a303c" stroke-width="0.7"/>
-    </pattern>
+
+    <!-- Soft 3D Shadow -->
+    <filter id="gearShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#05070a" flood-opacity="0.8"/>
+    </filter>
   </defs>
 
-  <rect width="1920" height="1080" fill="url(#bg)"/>
-  <rect width="1920" height="1040" fill="url(#grid)" opacity="0.8"/>
+  <!-- Background Canvas -->
+  <rect width="1920" height="1080" fill="url(#acadBg451)"/>
 
-  <!-- AutoCAD Header -->
-  <rect width="1920" height="36" fill="#131518"/>
-  <rect x="10" y="8" width="20" height="20" rx="3" fill="#e01a22"/>
-  <text x="14" y="23" fill="#ffffff" font-family="sans-serif" font-size="13" font-weight="bold">A</text>
-  <text x="40" y="23" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="12">Autodesk AutoCAD 2027 - EDUCATION (NON COMMERCIAL)  Drawing111.dwg</text>
-  <text x="1650" y="23" fill="#cbd5e1" font-family="Segoe UI, sans-serif" font-size="12">hariharadasa074</text>
-
-  <!-- Viewport HUD -->
-  <text x="15" y="60" fill="#cbd5e1" font-family="Consolas, monospace" font-size="13">[-][SW Isometric][Shaded (Fast)]</text>
-
-  <!-- ViewCube -->
-  <g transform="translate(1820, 110) rotate(-15)">
-    <polygon points="0,-40 38,-20 0,0 -38,-20" fill="#525b68" stroke="#3b424d" stroke-width="1.5"/>
-    <polygon points="-38,-20 0,0 0,40 -38,20" fill="#3b424d" stroke="#2d333b" stroke-width="1.5"/>
-    <polygon points="0,0 38,-20 38,20 0,40" fill="#444c58" stroke="#2d333b" stroke-width="1.5"/>
-    <text x="-12" y="-15" fill="#f1f5f9" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold">TOP</text>
-    <text x="-24" y="22" fill="#f1f5f9" font-family="Segoe UI, sans-serif" font-size="9" font-weight="bold">FRONT</text>
-    <text x="4" y="22" fill="#f1f5f9" font-family="Segoe UI, sans-serif" font-size="9" font-weight="bold">LEFT</text>
-  </g>
-  <text x="1810" y="180" fill="#94a3b8" font-family="Consolas, monospace" font-size="10">WCS</text>
-
-  <!-- UCS Icon -->
-  <g transform="translate(45, 960)">
-    <line x1="0" y1="0" x2="35" y2="25" stroke="#ef4444" stroke-width="3"/>
-    <text x="38" y="32" fill="#ef4444" font-family="Consolas, monospace" font-weight="bold" font-size="12">X</text>
-    <line x1="0" y1="0" x2="30" y2="-25" stroke="#22c55e" stroke-width="3"/>
-    <text x="32" y="-28" fill="#22c55e" font-family="Consolas, monospace" font-weight="bold" font-size="12">Y</text>
-    <line x1="0" y1="0" x2="0" y2="-40" stroke="#3b82f6" stroke-width="3"/>
-    <text x="-4" y="-45" fill="#3b82f6" font-family="Consolas, monospace" font-weight="bold" font-size="12">Z</text>
+  <!-- AutoCAD 3D Isometric Ground Grid -->
+  <g opacity="0.32" stroke="#384353" stroke-width="1">
+    <path d="M 0 540 L 1920 540 M 0 630 L 1920 630 M 0 730 L 1920 730 M 0 840 L 1920 840 M 0 960 L 1920 960" />
+    <path d="M 180 1080 L 800 280 M 440 1080 L 890 280 M 700 1080 L 970 280 M 960 1080 L 1050 280 M 1220 1080 L 1140 280 M 1480 1080 L 1220 280 M 1740 1080 L 1300 280" stroke-opacity="0.35"/>
+    <path d="M 100 280 L 1650 1080 M 350 280 L 1820 1080 M -120 280 L 1400 1080" stroke-opacity="0.35"/>
   </g>
 
-  <!-- 3D Spur Gear Model -->
-  <g transform="translate(960, 480) rotate(16) skewX(-16)">
-    <!-- Flank Extrusion Thickness -->
-    <g transform="translate(0, 80)">
-      <line x1="340.0" y1="-80.0" x2="340.0" y2="0.0" stroke="url(#gearFlank)" stroke-width="40" stroke-linecap="round"/>
-      <line x1="319.5" y1="-1.3" x2="319.5" y2="78.7" stroke="url(#gearFlank)" stroke-width="40" stroke-linecap="round"/>
-      <line x1="260.5" y1="67.8" x2="260.5" y2="147.8" stroke="url(#gearFlank)" stroke-width="40" stroke-linecap="round"/>
-      <line x1="170.0" y1="119.2" x2="170.0" y2="199.2" stroke="url(#gearFlank)" stroke-width="40" stroke-linecap="round"/>
-      <line x1="59.0" y1="146.5" x2="59.0" y2="226.5" stroke="url(#gearFlank)" stroke-width="40" stroke-linecap="round"/>
-      <line x1="-59.0" y1="146.5" x2="-59.0" y2="226.5" stroke="url(#gearFlank)" stroke-width="40" stroke-linecap="round"/>
-      <line x1="-170.0" y1="119.2" x2="-170.0" y2="199.2" stroke="url(#gearFlank)" stroke-width="40" stroke-linecap="round"/>
-      <line x1="-260.5" y1="67.8" x2="-260.5" y2="147.8" stroke="url(#gearFlank)" stroke-width="40" stroke-linecap="round"/>
-      <line x1="-319.5" y1="-1.3" x2="-319.5" y2="78.7" stroke="url(#gearFlank)" stroke-width="40" stroke-linecap="round"/>
-      <line x1="-340.0" y1="-80.0" x2="-340.0" y2="0.0" stroke="url(#gearFlank)" stroke-width="40" stroke-linecap="round"/>
-      <line x1="-319.5" y1="-158.7" x2="-319.5" y2="-78.7" stroke="url(#gearFlank)" stroke-width="40" stroke-linecap="round"/>
-      <line x1="-260.5" y1="-227.8" x2="-260.5" y2="-147.8" stroke="url(#gearFlank)" stroke-width="40" stroke-linecap="round"/>
-      <line x1="-170.0" y1="-279.2" x2="-170.0" y2="-199.2" stroke="url(#gearFlank)" stroke-width="40" stroke-linecap="round"/>
-      <line x1="-59.0" y1="-306.5" x2="-59.0" y2="-226.5" stroke="url(#gearFlank)" stroke-width="40" stroke-linecap="round"/>
-      <line x1="59.0" y1="-306.5" x2="59.0" y2="-226.5" stroke="url(#gearFlank)" stroke-width="40" stroke-linecap="round"/>
-      <line x1="170.0" y1="-279.2" x2="170.0" y2="-199.2" stroke="url(#gearFlank)" stroke-width="40" stroke-linecap="round"/>
-      <line x1="260.5" y1="-227.8" x2="260.5" y2="-147.8" stroke="url(#gearFlank)" stroke-width="40" stroke-linecap="round"/>
-      <line x1="319.5" y1="-158.7" x2="319.5" y2="-78.7" stroke="url(#gearFlank)" stroke-width="40" stroke-linecap="round"/>
+  <!-- AutoCAD Top Title Bar -->
+  <rect width="1920" height="38" fill="#14171c"/>
+  <rect x="12" y="9" width="20" height="20" rx="3" fill="#e01a22"/>
+  <text x="16" y="24" fill="#ffffff" font-family="Segoe UI, sans-serif" font-size="14" font-weight="bold">A</text>
+  <text x="44" y="24" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="12.5">Autodesk AutoCAD 2027 - EDUCATION (NON COMMERCIAL)  Drawing111.dwg</text>
 
-      <ellipse cx="0" cy="0" rx="270" ry="180" fill="url(#gearFlank)" />
+  <!-- Right Header Info -->
+  <rect x="1260" y="8" width="220" height="22" rx="3" fill="#1e242d" stroke="#333b47" stroke-width="1"/>
+  <text x="1275" y="23" fill="#64748b" font-family="Segoe UI, sans-serif" font-size="11.5">Type a keyword or phrase</text>
+  <circle cx="1500" cy="19" r="8" fill="#38bdf8"/>
+  <text x="1516" y="23" fill="#cbd5e1" font-family="Segoe UI, sans-serif" font-size="12">hariharadasa074</text>
+
+  <!-- Viewport HUD Overlay (Top-Left) -->
+  <text x="16" y="65" fill="#cbd5e1" font-family="Consolas, monospace" font-size="13.5">[-][SW Isometric][Shaded (Fast)]</text>
+
+  <!-- ViewCube (Top-Right) -->
+  <g transform="translate(1835, 115) scale(0.95)">
+    <!-- Compass Ring -->
+    <ellipse cx="0" cy="0" rx="46" ry="46" fill="none" stroke="#475263" stroke-width="1.5" stroke-dasharray="3 5"/>
+    <text x="-4" y="-36" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="9" font-weight="bold">N</text>
+    <text x="36" y="3" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="9" font-weight="bold">E</text>
+    <text x="-4" y="42" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="9" font-weight="bold">S</text>
+    <text x="-42" y="3" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="9" font-weight="bold">W</text>
+
+    <!-- Isometric ViewCube oriented for SW Isometric (TOP, LEFT, FRONT visible) -->
+    <polygon points="0,-36 34,-18 0,0 -34,-18" fill="#64748b" stroke="#333f50" stroke-width="1.5"/>
+    <polygon points="-34,-18 0,0 0,36 -34,18" fill="#526074" stroke="#333f50" stroke-width="1.5"/>
+    <polygon points="0,0 34,-18 34,18 0,36" fill="#475569" stroke="#333f50" stroke-width="1.5"/>
+    <text x="-9" y="-14" fill="#ffffff" font-family="Segoe UI, sans-serif" font-size="9.5" font-weight="bold">TOP</text>
+    <text x="-25" y="20" fill="#ffffff" font-family="Segoe UI, sans-serif" font-size="9" font-weight="bold">LEFT</text>
+    <text x="3" y="20" fill="#ffffff" font-family="Segoe UI, sans-serif" font-size="8.5" font-weight="bold">FRONT</text>
+
+    <!-- WCS Badge -->
+    <rect x="-16" y="52" width="32" height="14" rx="3" fill="#2d3748"/>
+    <text x="-10" y="63" fill="#94a3b8" font-family="Consolas, monospace" font-size="9">WCS</text>
+  </g>
+
+  <!-- UCS Coordinate Triad (Bottom-Left) -->
+  <g transform="translate(60, 950)">
+    <circle cx="0" cy="0" r="3" fill="#ffffff"/>
+    <line x1="0" y1="0" x2="42" y2="28" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
+    <text x="46" y="34" fill="#ef4444" font-family="Consolas, monospace" font-weight="bold" font-size="13">X</text>
+    <line x1="0" y1="0" x2="38" y2="-28" stroke="#22c55e" stroke-width="3" stroke-linecap="round"/>
+    <text x="42" y="-30" fill="#22c55e" font-family="Consolas, monospace" font-weight="bold" font-size="13">Y</text>
+    <line x1="0" y1="0" x2="0" y2="-48" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/>
+    <text x="-5" y="-54" fill="#3b82f6" font-family="Consolas, monospace" font-weight="bold" font-size="13">Z</text>
+  </g>
+
+  <!-- 3D PRECISION SPUR GEAR (SW ISOMETRIC, SHADED FAST) -->
+  <!-- Centered at (960, 490) -->
+  <g transform="translate(960, 480)" filter="url(#gearShadow)">
+    
+    <!-- Cast Shadow on ground plane -->
+    <ellipse cx="0" cy="180" rx="350" ry="120" fill="#07090d" opacity="0.6"/>
+
+    <!-- 1. CYLINDRICAL FLANK EXTRUSION BODY (Lower Body) -->
+    <!-- Extrusion Height: ~120px downward -->
+    <g transform="translate(0, 75)">
+      <!-- Base Cylinder Outer Silhouette -->
+      <path
+        d="M -340 -75 L -340 55 C -340 180 340 180 340 55 L 340 -75 Z"
+        fill="url(#gearFlankShade)"
+      />
+
+      <!-- Vertical Tooth Flank Shading Profiles (18 Involute Teeth) -->
+      <!-- Teeth flanks extending down to base -->
+      <g fill="#475569" stroke="#334155" stroke-width="1.5">
+        <!-- Front facing tooth columns -->
+        <path d="M -340 -75 L -340 35 L -315 50 L -315 -60 Z" fill="#64748b"/>
+        <path d="M -300 -60 L -300 58 L -265 72 L -265 -45 Z" fill="#526074"/>
+        <path d="M -245 -48 L -245 78 L -195 95 L -195 -32 Z" fill="#526074"/>
+        <path d="M -170 -35 L -170 102 L -115 116 L -115 -20 Z" fill="#475569"/>
+        <path d="M -85 -22 L -85 120 L -25 125 L -25 -10 Z" fill="#475569"/>
+        <path d="M 5 -10 L 5 125 L 65 122 L 65 -18 Z" fill="#526074"/>
+        <path d="M 95 -18 L 95 118 L 150 105 L 150 -30 Z" fill="#64748b"/>
+        <path d="M 180 -32 L 180 98 L 230 82 L 230 -45 Z" fill="#64748b"/>
+        <path d="M 255 -48 L 255 75 L 295 58 L 295 -60 Z" fill="#718096"/>
+        <path d="M 315 -60 L 315 50 L 340 35 L 340 -75 Z" fill="#718096"/>
+      </g>
+
+      <!-- Signature AutoCAD Horizontal Wireframe Mid-Plane Split Line -->
+      <path
+        d="M -340 -10 C -340 70 -180 110 0 110 C 180 110 340 70 340 -10"
+        fill="none"
+        stroke="#e2e8f0"
+        stroke-width="2"
+        opacity="0.85"
+      />
+      <!-- Root fillet wave wireframe -->
+      <path
+        d="M -340 -10 Q -325 5 -315 2 Q -305 20 -290 18 Q -275 35 -255 34 Q -235 50 -210 50 Q -185 65 -160 65 Q -135 78 -105 80 Q -75 90 -45 92 Q -15 98 15 98 Q 45 95 75 90 Q 105 82 135 76 Q 165 65 190 58 Q 215 48 240 38 Q 265 26 285 18 Q 305 8 320 2 Q 330 -5 340 -10"
+        fill="none"
+        stroke="#ffffff"
+        stroke-width="1.8"
+        opacity="0.9"
+      />
     </g>
 
-    <!-- Top Gear Face -->
-    <ellipse cx="0" cy="0" rx="340" ry="230" fill="url(#gearTop)" stroke="#f3f4f6" stroke-width="4"/>
-    <ellipse cx="0" cy="0" rx="290" ry="195" fill="none" stroke="#ffffff" stroke-width="3" stroke-dasharray="8,6"/>
-    <ellipse cx="335.0" cy="0.0" rx="24" ry="16" fill="url(#gearTop)" stroke="#ffffff" stroke-width="2.5"/>
-    <ellipse cx="314.8" cy="77.0" rx="24" ry="16" fill="url(#gearTop)" stroke="#ffffff" stroke-width="2.5"/>
-    <ellipse cx="256.6" cy="144.6" rx="24" ry="16" fill="url(#gearTop)" stroke="#ffffff" stroke-width="2.5"/>
-    <ellipse cx="167.5" cy="194.9" rx="24" ry="16" fill="url(#gearTop)" stroke="#ffffff" stroke-width="2.5"/>
-    <ellipse cx="58.2" cy="221.6" rx="24" ry="16" fill="url(#gearTop)" stroke="#ffffff" stroke-width="2.5"/>
-    <ellipse cx="-58.2" cy="221.6" rx="24" ry="16" fill="url(#gearTop)" stroke="#ffffff" stroke-width="2.5"/>
-    <ellipse cx="-167.5" cy="194.9" rx="24" ry="16" fill="url(#gearTop)" stroke="#ffffff" stroke-width="2.5"/>
-    <ellipse cx="-256.6" cy="144.6" rx="24" ry="16" fill="url(#gearTop)" stroke="#ffffff" stroke-width="2.5"/>
-    <ellipse cx="-314.8" cy="77.0" rx="24" ry="16" fill="url(#gearTop)" stroke="#ffffff" stroke-width="2.5"/>
-    <ellipse cx="-335.0" cy="0.0" rx="24" ry="16" fill="url(#gearTop)" stroke="#ffffff" stroke-width="2.5"/>
-    <ellipse cx="-314.8" cy="-77.0" rx="24" ry="16" fill="url(#gearTop)" stroke="#ffffff" stroke-width="2.5"/>
-    <ellipse cx="-256.6" cy="-144.6" rx="24" ry="16" fill="url(#gearTop)" stroke="#ffffff" stroke-width="2.5"/>
-    <ellipse cx="-167.5" cy="-194.9" rx="24" ry="16" fill="url(#gearTop)" stroke="#ffffff" stroke-width="2.5"/>
-    <ellipse cx="-58.2" cy="-221.6" rx="24" ry="16" fill="url(#gearTop)" stroke="#ffffff" stroke-width="2.5"/>
-    <ellipse cx="58.2" cy="-221.6" rx="24" ry="16" fill="url(#gearTop)" stroke="#ffffff" stroke-width="2.5"/>
-    <ellipse cx="167.5" cy="-194.9" rx="24" ry="16" fill="url(#gearTop)" stroke="#ffffff" stroke-width="2.5"/>
-    <ellipse cx="256.6" cy="-144.6" rx="24" ry="16" fill="url(#gearTop)" stroke="#ffffff" stroke-width="2.5"/>
-    <ellipse cx="314.8" cy="-77.0" rx="24" ry="16" fill="url(#gearTop)" stroke="#ffffff" stroke-width="2.5"/>
+    <!-- 2. TOP FACE OF THE SPUR GEAR -->
+    <!-- 18 Involute Teeth Perimeter -->
+    <!-- Parametric 18-tooth gear profile polygon (tip radius ~345, root radius ~295) -->
+    <path
+      d="
+        M 345 0
+        C 345 -15 330 -25 315 -28
+        C 300 -32 290 -45 298 -60
+        C 308 -75 324 -82 320 -96
+        C 316 -110 292 -118 276 -112
+        C 260 -106 244 -120 246 -136
+        C 248 -152 260 -168 248 -180
+        C 236 -192 210 -190 196 -180
+        C 182 -170 162 -178 156 -195
+        C 150 -212 155 -230 140 -240
+        C 125 -250 100 -240 90 -226
+        C 80 -212 58 -215 48 -232
+        C 38 -248 38 -266 20 -272
+        C 2 -278 -18 -264 -25 -248
+        C -32 -232 -54 -230 -66 -244
+        C -78 -258 -85 -275 -102 -276
+        C -120 -278 -135 -260 -138 -242
+        C -142 -225 -164 -218 -178 -228
+        C -192 -238 -208 -248 -224 -242
+        C -240 -236 -245 -215 -240 -198
+        C -235 -180 -255 -168 -270 -172
+        C -285 -176 -308 -180 -320 -168
+        C -332 -156 -326 -134 -314 -120
+        C -302 -105 -318 -88 -332 -88
+        C -346 -88 -365 -85 -370 -70
+        C -375 -55 -358 -38 -342 -30
+        C -325 -22 -332 0 -342 8
+        C -352 16 -370 28 -366 44
+        C -362 60 -340 70 -325 68
+        C -310 66 -300 84 -306 98
+        C -312 112 -318 130 -306 142
+        C -294 154 -272 152 -258 142
+        C -244 132 -228 145 -228 162
+        C -228 178 -232 198 -216 208
+        C -200 218 -178 208 -168 194
+        C -158 180 -138 188 -132 205
+        C -126 222 -122 242 -105 248
+        C -88 254 -70 240 -62 224
+        C -54 208 -32 210 -22 228
+        C -12 246 -6 265 12 268
+        C 30 270 45 252 50 235
+        C 55 218 78 214 90 226
+        C 102 238 112 254 130 252
+        C 148 250 158 230 156 212
+        C 154 195 174 185 190 192
+        C 206 198 228 204 240 192
+        C 252 180 250 158 240 144
+        C 230 130 248 114 264 116
+        C 280 118 302 118 312 104
+        C 322 90 312 70 298 58
+        C 284 45 298 26 312 22
+        C 326 18 345 15 345 0
+        Z
+      "
+      fill="url(#gearShadedTop)"
+      stroke="#ffffff"
+      stroke-width="2"
+    />
 
-    <!-- Recessed Web -->
-    <ellipse cx="0" cy="0" rx="220" ry="150" fill="#4b5563" stroke="#374151" stroke-width="4"/>
-    <ellipse cx="0" cy="0" rx="210" ry="142" fill="#1f2937"/>
+    <!-- Tooth Top Bevel Highlight Edge -->
+    <path
+      d="M -300 -60 C -150 -120 150 -120 300 -60 C 330 0 330 40 300 80 C 150 130 -150 130 -300 80 Z"
+      fill="none"
+      stroke="#ffffff"
+      stroke-width="1.5"
+      opacity="0.6"
+    />
 
-    <!-- Raised Cylindrical Hub Boss -->
-    <ellipse cx="0" cy="-14" rx="130" ry="88" fill="url(#gearTop)" stroke="#ffffff" stroke-width="4"/>
-    <ellipse cx="0" cy="0" rx="124" ry="84" fill="#6b7280"/>
-    <ellipse cx="0" cy="-14" rx="120" ry="80" fill="url(#gearTop)"/>
+    <!-- 3. RECESSED ANNULAR WEB RING (Concave Trough) -->
+    <!-- Outer rim of the web trough -->
+    <ellipse cx="0" cy="5" rx="220" ry="118" fill="url(#webTrough)" stroke="#475569" stroke-width="3"/>
+    <!-- Inner floor of the trough with soft shadow -->
+    <ellipse cx="0" cy="8" rx="195" ry="102" fill="#3b4452" stroke="#64748b" stroke-width="1.5"/>
 
-    <!-- Shaft Bore with Keyway -->
-    <ellipse cx="0" cy="-14" rx="55" ry="38" fill="#0f172a" stroke="#38bdf8" stroke-width="3.5"/>
-    <!-- Keyway cut -->
-    <path d="M -14 -50 L 14 -50 L 14 -35 L -14 -35 Z" fill="#0f172a" stroke="#38bdf8" stroke-width="3"/>
+    <!-- Distinctive Circular Specular Highlight on the Trough Radiused Lip -->
+    <path
+      d="M -180 -25 C -120 -60 120 -60 180 -25"
+      fill="none"
+      stroke="#ffffff"
+      stroke-width="4.5"
+      stroke-linecap="round"
+      opacity="0.9"
+    />
+    <path
+      d="M -160 -15 C -100 -50 100 -50 160 -15"
+      fill="none"
+      stroke="#e2e8f0"
+      stroke-width="2"
+      opacity="0.75"
+    />
+
+    <!-- 4. RAISED CYLINDRICAL HUB BOSS -->
+    <!-- Hub Boss Base Fillet -->
+    <ellipse cx="0" cy="10" rx="112" ry="60" fill="#475569" stroke="#64748b" stroke-width="2"/>
+    <!-- Hub Boss Vertical Wall -->
+    <path
+      d="M -108 5 L -108 -15 C -108 -48 108 -48 108 -15 L 108 5 C 108 35 -108 35 -108 5 Z"
+      fill="url(#gearFlankShade)"
+      stroke="#cbd5e1"
+      stroke-width="1.5"
+    />
+    <!-- Hub Boss Top Flat Face -->
+    <ellipse cx="0" cy="-15" rx="106" ry="54" fill="url(#gearShadedTop)" stroke="#ffffff" stroke-width="2"/>
+
+    <!-- 5. CENTRAL DRIVE SHAFT BORE & RECTANGULAR KEYWAY -->
+    <!-- Central Bore Base Circle with Keyway Notch at 12 o'clock -->
+    <g transform="translate(0, -15)">
+      <!-- Dark Internal Depth of Bore -->
+      <path
+        d="
+          M -38 0 
+          A 38 22 0 0 0 38 0 
+          A 38 22 0 0 0 14 -18 
+          L 14 -32 
+          L -14 -32 
+          L -14 -18 
+          A 38 22 0 0 0 -38 0 
+          Z
+        "
+        fill="#0d1117"
+        stroke="#334155"
+        stroke-width="2"
+      />
+
+      <!-- Bore Inner Wall Depth (Extrusion downwards into gear) -->
+      <path
+        d="M -38 0 L -38 35 C -38 52 38 52 38 35 L 38 0 C 38 22 -38 22 -38 0 Z"
+        fill="#07090e"
+      />
+
+      <!-- Keyway Slot Geometry (Rectangular Key Seat) -->
+      <!-- Left side wall of keyway -->
+      <line x1="-14" y1="-18" x2="-14" y2="-32" stroke="#64748b" stroke-width="2"/>
+      <!-- Top back seat of keyway -->
+      <line x1="-14" y1="-32" x2="14" y2="-32" stroke="#e2e8f0" stroke-width="2"/>
+      <!-- Right side wall of keyway -->
+      <line x1="14" y1="-32" x2="14" y2="-18" stroke="#475569" stroke-width="2"/>
+
+      <!-- Bore Rim Highlight -->
+      <path
+        d="M -38 0 A 38 22 0 0 1 38 0"
+        fill="none"
+        stroke="#ffffff"
+        stroke-width="1.5"
+        opacity="0.8"
+      />
+    </g>
   </g>
 
-  <!-- AutoCAD Bottom Bar -->
-  <rect y="1044" width="1920" height="36" fill="#16181d"/>
-  <rect x="15" y="1049" width="60" height="26" fill="#2d333b" rx="2"/>
-  <text x="28" y="1066" fill="#ffffff" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold">Model</text>
-  <text x="90" y="1066" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11">Layout1</text>
-  <text x="150" y="1066" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11">Layout2</text>
-  <text x="260" y="1066" fill="#cbd5e1" font-family="Consolas, monospace" font-size="12">Type a command</text>
-  <text x="1750" y="1066" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold">MODEL</text>
+  <!-- AutoCAD Bottom Command Line & Status Bar -->
+  <rect y="1038" width="1920" height="42" fill="#14171d"/>
+
+  <!-- Model / Layout tabs -->
+  <g transform="translate(14, 1044)">
+    <rect x="0" y="0" width="70" height="28" fill="#2d3748" rx="2"/>
+    <text x="14" y="19" fill="#ffffff" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold">Model</text>
+    <text x="88" y="19" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="12">Layout1</text>
+    <text x="154" y="19" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="12">Layout2</text>
+    <text x="216" y="19" fill="#64748b" font-family="Segoe UI, sans-serif" font-size="14">+</text>
+  </g>
+
+  <!-- Command Line Prompt -->
+  <g transform="translate(260, 1044)">
+    <rect x="0" y="0" width="540" height="28" rx="3" fill="#1c212a" stroke="#2b323e" stroke-width="1"/>
+    <path d="M 12 14 H 22 M 17 9 V 19" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="32" y="19" fill="#cbd5e1" font-family="Consolas, monospace" font-size="12.5">Type a command</text>
+  </g>
+
+  <!-- Right Status Toggles -->
+  <g transform="translate(1380, 1044)">
+    <rect x="0" y="0" width="60" height="28" fill="#1e293b" rx="2"/>
+    <text x="10" y="19" fill="#38bdf8" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="bold">MODEL</text>
+
+    <!-- Grid on icon -->
+    <rect x="68" y="4" width="20" height="20" rx="2" fill="#0284c7"/>
+    <path d="M 72 9 H 84 M 72 14 H 84 M 72 19 H 84 M 75 6 V 22 M 80 6 V 22" stroke="#ffffff" stroke-width="1"/>
+
+    <!-- Ortho / Polar / OSnap toggles -->
+    <rect x="96" y="4" width="20" height="20" rx="2" fill="#0284c7"/>
+    <path d="M 100 19 L 106 9 L 112 19 Z" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+
+    <rect x="124" y="4" width="20" height="20" rx="2" fill="#0284c7"/>
+    <circle cx="134" cy="14" r="5" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+
+    <rect x="152" y="4" width="20" height="20" rx="2" fill="#0284c7"/>
+    <rect x="156" y="8" width="12" height="12" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+
+    <!-- Dynamic UCS -->
+    <rect x="180" y="4" width="20" height="20" rx="2" fill="#0284c7"/>
+    <path d="M 184 18 L 190 10 L 196 18" stroke="#ffffff" stroke-width="1.5" fill="none"/>
+
+    <!-- 3D Object Snap -->
+    <rect x="208" y="4" width="20" height="20" rx="2" fill="#0284c7"/>
+    <polygon points="218,8 224,14 218,20 212,14" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+
+    <text x="240" y="19" fill="#94a3b8" font-family="Segoe UI, sans-serif" font-size="11">1:1</text>
+  </g>
 </svg>

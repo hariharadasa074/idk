@@ -1,5 +1,4 @@
-import React, { useState, useRef } from 'react';
-import { Camera, RefreshCw, CheckCircle2 } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
 
 interface AvatarContainerProps {
   className?: string;
@@ -10,31 +9,24 @@ interface AvatarContainerProps {
 export const AvatarContainer: React.FC<AvatarContainerProps> = ({
   className = '',
   size = 'lg',
-  showBadge = true
+  showBadge = false
 }) => {
   const [customImage, setCustomImage] = useState<string | null>(() => {
     return localStorage.getItem('suman_portfolio_avatar');
   });
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const result = event.target?.result as string;
-        setCustomImage(result);
-        localStorage.setItem('suman_portfolio_avatar', result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  // Sync avatar updates across components in the same tab
+  useEffect(() => {
+    const handleAvatarUpdate = (e: Event) => {
+      const customEvent = e as CustomEvent<string | null>;
+      setCustomImage(customEvent.detail ?? localStorage.getItem('suman_portfolio_avatar'));
+    };
 
-  const handleReset = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCustomImage(null);
-    localStorage.removeItem('suman_portfolio_avatar');
-  };
+    window.addEventListener('suman_avatar_updated', handleAvatarUpdate);
+    return () => {
+      window.removeEventListener('suman_avatar_updated', handleAvatarUpdate);
+    };
+  }, []);
 
   const sizeClasses = {
     sm: 'w-20 h-20',
@@ -44,23 +36,24 @@ export const AvatarContainer: React.FC<AvatarContainerProps> = ({
   };
 
   return (
-    <div className={`relative group ${className}`}>
-      {/* Clean Subtle Ring */}
-      <div className="absolute -inset-2 rounded-full border border-slate-200/70 pointer-events-none" />
+    <div className={`relative group inline-block ${className}`}>
+      {/* Outer Glow & Technical Ring */}
+      <div className="absolute -inset-2.5 rounded-full border border-blue-200/60 dark:border-blue-900/40 pointer-events-none" />
+      <div className="absolute -inset-1 rounded-full border border-slate-200/80 pointer-events-none" />
 
-      {/* Main Avatar Container */}
+      {/* Main Avatar Frame */}
       <div
-        className={`${sizeClasses[size]} relative rounded-full overflow-hidden bg-gradient-to-b from-blue-50 via-slate-50 to-slate-100 shadow-xl border-4 border-white transition-transform duration-500 group-hover:scale-[1.01]`}
+        className={`${sizeClasses[size]} relative rounded-full overflow-hidden bg-slate-50 shadow-xl border-4 border-white transition-all duration-300 group-hover:shadow-2xl`}
       >
         {customImage ? (
           <img
             src={customImage}
-            alt="Suman Das - Mechanical Engineering Student"
+            alt="Suman Das - Mechanical Engineering Profile"
             className="w-full h-full object-cover object-top"
           />
         ) : (
-          /* High-detail SVG Portrait of Suman Das: Sharp, warm, professional Indian Mechanical Engineer */
-          <div className="w-full h-full relative flex items-center justify-center">
+          /* High-Fidelity Vector Portrait rendered strictly to match Suman's formal photo */
+          <div className="w-full h-full relative flex items-center justify-center bg-[#F8FAFC]">
             <svg
               viewBox="0 0 400 400"
               className="w-full h-full"
@@ -69,171 +62,188 @@ export const AvatarContainer: React.FC<AvatarContainerProps> = ({
               aria-label="Suman Das Portrait"
             >
               <defs>
-                {/* Background radial gradient */}
-                <radialGradient id="bgGrad" cx="50%" cy="40%" r="60%">
-                  <stop offset="0%" stopColor="#EFF6FF" />
-                  <stop offset="60%" stopColor="#DBEAFE" />
-                  <stop offset="100%" stopColor="#CBD5E1" />
+                {/* Background light gradient matching clean studio headshot */}
+                <radialGradient id="sumanBg" cx="50%" cy="40%" r="65%">
+                  <stop offset="0%" stopColor="#FFFFFF" />
+                  <stop offset="70%" stopColor="#F1F5F9" />
+                  <stop offset="100%" stopColor="#E2E8F0" />
                 </radialGradient>
 
-                {/* Skin tone gradient */}
-                <linearGradient id="skinBase" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#DEB18E" />
-                  <stop offset="100%" stopColor="#C9976F" />
+                {/* Suman Skin Base */}
+                <linearGradient id="sumanSkin" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#DFAC84" />
+                  <stop offset="100%" stopColor="#C48E66" />
                 </linearGradient>
 
                 {/* Skin Shadow */}
-                <linearGradient id="skinShadow" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#C28B62" />
-                  <stop offset="100%" stopColor="#B37C55" />
+                <linearGradient id="sumanNeckShadow" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#B37C56" />
+                  <stop offset="100%" stopColor="#9C643E" />
                 </linearGradient>
 
-                {/* Hair gradient */}
-                <linearGradient id="hairGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                {/* Hair Gradient */}
+                <linearGradient id="sumanHair" x1="0%" y1="0%" x2="0%" y2="100%">
                   <stop offset="0%" stopColor="#1E293B" />
-                  <stop offset="70%" stopColor="#0F172A" />
+                  <stop offset="60%" stopColor="#0F172A" />
                   <stop offset="100%" stopColor="#020617" />
                 </linearGradient>
 
-                {/* Shirt gradient */}
-                <linearGradient id="shirtGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#3B82F6" />
-                  <stop offset="100%" stopColor="#1D4ED8" />
-                </linearGradient>
-
-                <linearGradient id="collarGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#F8FAFC" />
-                  <stop offset="100%" stopColor="#E2E8F0" />
-                </linearGradient>
+                {/* Suman Tie Pattern: Navy blue with diagonal maroon and white stripes */}
+                <pattern id="sumanTiePattern" width="30" height="30" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+                  <rect width="30" height="30" fill="#172554" />
+                  <rect x="0" y="0" width="12" height="30" fill="#881337" />
+                  <line x1="12" y1="0" x2="12" y2="30" stroke="#FFFFFF" strokeWidth="1.5" />
+                  <line x1="0" y1="0" x2="0" y2="30" stroke="#FFFFFF" strokeWidth="1.5" />
+                </pattern>
               </defs>
 
               {/* Background */}
-              <rect width="400" height="400" fill="url(#bgGrad)" />
+              <rect width="400" height="400" fill="url(#sumanBg)" />
 
-              {/* Engineering Drafting Grid Lines inside avatar */}
+              {/* Crisp White Collared Dress Shirt Shoulders */}
               <path
-                d="M 50 0 V 400 M 100 0 V 400 M 150 0 V 400 M 200 0 V 400 M 250 0 V 400 M 300 0 V 400 M 350 0 V 400
-                   M 0 50 H 400 M 0 100 H 400 M 0 150 H 400 M 0 200 H 400 M 0 250 H 400 M 0 300 H 400 M 0 350 H 400"
-                stroke="#2563eb"
-                strokeOpacity="0.08"
+                d="M 50 395 Q 110 320 190 318 L 210 318 Q 290 320 350 395 L 360 400 L 40 400 Z"
+                fill="#FFFFFF"
+                stroke="#E2E8F0"
+                strokeWidth="1.5"
+              />
+
+              {/* Shirt Shadow under Collar */}
+              <path
+                d="M 120 330 Q 200 365 280 330 L 285 350 Q 200 380 115 350 Z"
+                fill="#CBD5E1"
+                opacity="0.3"
+              />
+
+              {/* Neck & Shading */}
+              <rect x="175" y="235" width="50" height="85" rx="8" fill="url(#sumanNeckShadow)" />
+
+              {/* Adam's Apple subtle contour */}
+              <path d="M 194 276 Q 200 282 206 276" stroke="#87532F" strokeWidth="2" fill="none" strokeLinecap="round" />
+
+              {/* Formal Tie: Navy with Maroon and White Diagonal Stripes */}
+              {/* Tie Knot */}
+              <path
+                d="M 183 318 L 217 318 L 210 348 L 190 348 Z"
+                fill="#172554"
+                stroke="#0F172A"
                 strokeWidth="1"
               />
+              <path
+                d="M 183 318 L 217 318 L 210 348 L 190 348 Z"
+                fill="url(#sumanTiePattern)"
+              />
 
-              {/* Shoulders & Torso with Crisp Semi-Formal Attire */}
+              {/* Tie Body extending down */}
               <path
-                d="M 70 380 Q 120 310 200 308 Q 280 310 330 380 L 340 400 L 60 400 Z"
-                fill="url(#shirtGrad)"
+                d="M 190 348 L 210 348 L 222 400 L 178 400 Z"
+                fill="#172554"
               />
-              {/* Shirt inner collar / undershirt */}
               <path
-                d="M 175 308 L 200 365 L 225 308 Z"
-                fill="url(#collarGrad)"
+                d="M 190 348 L 210 348 L 222 400 L 178 400 Z"
+                fill="url(#sumanTiePattern)"
               />
-              {/* Collar Left */}
-              <path
-                d="M 148 308 L 195 345 L 182 308 Z"
-                fill="#EFF6FF"
-                stroke="#BFDBFE"
-                strokeWidth="1"
-              />
-              {/* Collar Right */}
-              <path
-                d="M 252 308 L 205 345 L 218 308 Z"
-                fill="#F8FAFC"
-                stroke="#BFDBFE"
-                strokeWidth="1"
-              />
-              {/* Placket line */}
-              <line x1="200" y1="365" x2="200" y2="400" stroke="#1E40AF" strokeWidth="2" strokeDasharray="3 3" />
 
-              {/* Neck */}
-              <rect x="178" y="240" width="44" height="75" rx="8" fill="url(#skinShadow)" />
-              {/* Adam's apple subtle shadow */}
-              <path d="M 194 275 Q 200 280 206 275" stroke="#9A6945" strokeWidth="2" fill="none" strokeLinecap="round" />
+              {/* Shirt Collar Leaves (Left & Right) */}
+              {/* Left Collar */}
+              <path
+                d="M 152 316 L 202 344 L 180 316 Z"
+                fill="#FFFFFF"
+                stroke="#CBD5E1"
+                strokeWidth="1.5"
+              />
+              {/* Right Collar */}
+              <path
+                d="M 248 316 L 198 344 L 220 316 Z"
+                fill="#FFFFFF"
+                stroke="#CBD5E1"
+                strokeWidth="1.5"
+              />
 
               {/* Ears */}
-              <ellipse cx="140" cy="195" rx="14" ry="22" fill="#D3A27D" />
-              <ellipse cx="260" cy="195" rx="14" ry="22" fill="#C9976F" />
-              <path d="M 142 188 Q 136 195 142 204" stroke="#A87550" strokeWidth="2" fill="none" />
-              <path d="M 258 188 Q 264 195 258 204" stroke="#A87550" strokeWidth="2" fill="none" />
+              <ellipse cx="140" cy="195" rx="13" ry="21" fill="#CA956E" />
+              <ellipse cx="260" cy="195" rx="13" ry="21" fill="#BF8962" />
+              <path d="M 141 188 Q 136 195 141 203" stroke="#9C643E" strokeWidth="2" fill="none" />
+              <path d="M 259 188 Q 264 195 259 203" stroke="#9C643E" strokeWidth="2" fill="none" />
 
               {/* Face Shape */}
               <path
-                d="M 144 165 C 144 125 155 120 200 120 C 245 120 256 125 256 165 C 256 220 242 260 200 264 C 158 260 144 220 144 165 Z"
-                fill="url(#skinBase)"
+                d="M 145 160 C 145 120 156 115 200 115 C 244 115 255 120 255 160 C 255 224 242 264 200 268 C 158 264 145 224 145 160 Z"
+                fill="url(#sumanSkin)"
               />
 
-              {/* Hair Base & Clean Professional Cut */}
+              {/* Hair Base */}
               <path
-                d="M 140 160 C 136 120 150 78 200 78 C 250 78 264 120 260 160 C 252 140 248 130 230 125 C 205 118 165 128 140 160 Z"
-                fill="url(#hairGrad)"
+                d="M 141 155 C 137 110 152 70 200 70 C 248 70 263 110 259 155 C 252 135 246 122 228 116 C 200 108 162 120 141 155 Z"
+                fill="url(#sumanHair)"
               />
-              {/* Hair Texture & Modern Side Parting */}
+
+              {/* Hair Texture & Clean Side Part */}
               <path
-                d="M 152 125 Q 185 96 235 106 Q 248 120 254 140 Q 230 115 180 116 Q 155 124 152 125 Z"
+                d="M 150 118 Q 185 88 238 98 Q 252 115 255 138 Q 230 110 180 112 Q 155 118 150 118 Z"
                 fill="#334155"
-                opacity="0.6"
+                opacity="0.7"
               />
 
               {/* Eyebrows */}
               <path
-                d="M 160 166 Q 175 160 188 165"
-                stroke="#1E293B"
-                strokeWidth="4"
+                d="M 158 162 Q 174 156 189 161"
+                stroke="#0F172A"
+                strokeWidth="4.5"
                 strokeLinecap="round"
                 fill="none"
               />
               <path
-                d="M 212 165 Q 225 160 240 166"
-                stroke="#1E293B"
-                strokeWidth="4"
+                d="M 211 161 Q 226 156 242 162"
+                stroke="#0F172A"
+                strokeWidth="4.5"
                 strokeLinecap="round"
                 fill="none"
               />
 
               {/* Eyes */}
-              <ellipse cx="174" cy="180" rx="9" ry="6" fill="#FFFFFF" />
-              <circle cx="175" cy="180" r="4.2" fill="#1E293B" />
-              <circle cx="176.5" cy="178.5" r="1.5" fill="#FFFFFF" />
+              <ellipse cx="174" cy="176" rx="9.5" ry="6.5" fill="#FFFFFF" />
+              <circle cx="174.5" cy="176" r="4.5" fill="#0F172A" />
+              <circle cx="176" cy="174.5" r="1.5" fill="#FFFFFF" />
 
-              <ellipse cx="226" cy="180" rx="9" ry="6" fill="#FFFFFF" />
-              <circle cx="225" cy="180" r="4.2" fill="#1E293B" />
-              <circle cx="226.5" cy="178.5" r="1.5" fill="#FFFFFF" />
+              <ellipse cx="226" cy="176" rx="9.5" ry="6.5" fill="#FFFFFF" />
+              <circle cx="225.5" cy="176" r="4.5" fill="#0F172A" />
+              <circle cx="227" cy="174.5" r="1.5" fill="#FFFFFF" />
 
-              {/* Upper Eyelids */}
-              <path d="M 165 178 Q 174 173 184 177" stroke="#334155" strokeWidth="2" fill="none" />
-              <path d="M 216 177 Q 226 173 235 178" stroke="#334155" strokeWidth="2" fill="none" />
+              {/* Eyelids */}
+              <path d="M 164 174 Q 174 169 184 173" stroke="#1E293B" strokeWidth="2.2" fill="none" />
+              <path d="M 216 173 Q 226 169 236 174" stroke="#1E293B" strokeWidth="2.2" fill="none" />
 
               {/* Nose */}
               <path
-                d="M 200 178 L 197 206 Q 200 213 205 208"
-                stroke="#9F6F4C"
+                d="M 200 174 L 197 205 Q 200 212 205 207"
+                stroke="#9C643E"
                 strokeWidth="2.5"
                 fill="none"
                 strokeLinecap="round"
               />
-              <ellipse cx="193" cy="207" rx="3" ry="1.5" fill="#9F6F4C" opacity="0.6" />
-              <ellipse cx="207" cy="207" rx="3" ry="1.5" fill="#9F6F4C" opacity="0.6" />
+              <ellipse cx="192" cy="207" rx="3.5" ry="1.8" fill="#9C643E" opacity="0.6" />
+              <ellipse cx="208" cy="207" rx="3.5" ry="1.8" fill="#9C643E" opacity="0.6" />
 
-              {/* Mouth & Confident Warm Smile */}
+              {/* Suman Das Signature Trimmed Mustache */}
               <path
-                d="M 182 230 Q 200 244 218 230"
-                stroke="#8C4F32"
-                strokeWidth="3.2"
+                d="M 180 221 C 187 217 194 218 200 220 C 206 218 213 217 220 221 C 218 226 210 228 200 227 C 190 228 182 226 180 221 Z"
+                fill="#0F172A"
+              />
+
+              {/* Subtle Natural Lip & Smile */}
+              <path
+                d="M 182 232 Q 200 240 218 232"
+                stroke="#944E38"
+                strokeWidth="3"
                 fill="none"
                 strokeLinecap="round"
               />
-              {/* Subtle teeth highlight */}
-              <path
-                d="M 188 231 Q 200 236 212 231"
-                fill="#FFFFFF"
-                opacity="0.8"
-              />
 
-              {/* Chin Accent */}
+              {/* Chin Contour */}
               <path
-                d="M 194 252 Q 200 255 206 252"
-                stroke="#B5815D"
+                d="M 194 256 Q 200 259 206 256"
+                stroke="#B37C56"
                 strokeWidth="2"
                 fill="none"
                 strokeLinecap="round"
@@ -241,40 +251,11 @@ export const AvatarContainer: React.FC<AvatarContainerProps> = ({
             </svg>
           </div>
         )}
-
-        {/* Upload Overlay on Hover */}
-        <div
-          onClick={() => fileInputRef.current?.click()}
-          className="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-1.5 text-white cursor-pointer p-4 text-center backdrop-blur-xs"
-        >
-          <Camera className="w-5 h-5" />
-          <span className="text-[11px] font-medium leading-tight">
-            {customImage ? 'Change Photo' : 'Upload Suman\'s Photo'}
-          </span>
-          <span className="text-[9px] text-slate-300">Click to upload personal picture</span>
-          {customImage && (
-            <button
-              onClick={handleReset}
-              className="mt-1 px-2 py-0.5 text-[10px] bg-red-600/80 hover:bg-red-700 text-white rounded flex items-center gap-1"
-            >
-              <RefreshCw className="w-2.5 h-2.5" />
-              Reset
-            </button>
-          )}
-        </div>
-
-        <input
-          ref={fileInputRef}
-          type="file"
-          accept="image/*"
-          className="hidden"
-          onChange={handleImageUpload}
-        />
       </div>
 
       {/* Floating Status Badge */}
       {showBadge && (
-        <div className="absolute -bottom-2 -right-2 sm:bottom-2 sm:right-0 bg-white/95 backdrop-blur-sm border border-slate-200/90 shadow-lg rounded-xl px-3 py-1.5 flex items-center gap-2 select-none">
+        <div className="absolute -bottom-2 -left-2 bg-white/95 backdrop-blur-sm border border-slate-200/90 shadow-lg rounded-xl px-3 py-1.5 flex items-center gap-2 select-none">
           <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
           <div className="text-left">
             <p className="text-[11px] font-bold text-slate-900 leading-tight">B.Tech Mechanical</p>
