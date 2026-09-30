@@ -18,7 +18,7 @@ const CAD_MODELS: CadModel[] = [
     id: 'cad-wheel',
     title: 'Alloy Wheel Rim with Mounted Tire & Tread Assembly',
     fileName: 'Drawing3 by suman.dwg',
-    defaultSrc: './screenshot-450.svg',
+    defaultSrc: './Screenshot (450).png',
     storageKey: 'suman_cad_wheel_screenshot',
     software: 'Autodesk AutoCAD 2027 - EDUCATION (NON COMMERCIAL)',
     viewport: '[-][Custom View][Realistic (Fast)]',
@@ -36,7 +36,7 @@ const CAD_MODELS: CadModel[] = [
     id: 'cad-gear',
     title: 'Precision Involute Spur Gear with Hub & Keyway',
     fileName: 'Drawing111.dwg',
-    defaultSrc: './screenshot-451.svg',
+    defaultSrc: './Screenshot (451).png',
     storageKey: 'suman_cad_gear_screenshot',
     software: 'Autodesk AutoCAD 2027 - EDUCATION (NON COMMERCIAL)',
     viewport: '[-][SW Isometric][Shaded (Fast)]',
@@ -54,8 +54,8 @@ const CAD_MODELS: CadModel[] = [
 
 export const Cad3dDrawings: React.FC = () => {
   const [images, setImages] = useState<Record<string, string>>({
-    'cad-wheel': './screenshot-450.svg',
-    'cad-gear': './screenshot-451.svg'
+    'cad-wheel': './screenshot-450.png',
+    'cad-gear': './screenshot-451.png'
   });
 
   const [activeModalModel, setActiveModalModel] = useState<CadModel | null>(null);
