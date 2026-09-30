@@ -7,7 +7,7 @@ interface TataCertificateViewProps {
 }
 
 export const TataCertificateView: React.FC<TataCertificateViewProps> = ({
-  imageSrc = ' /Screenshot(452).png',
+  imageSrc = '/Screenshot(452).png',
   className = ''
 }) => {
   return (
