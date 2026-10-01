@@ -7,7 +7,7 @@ interface HeroProps {
   onOpenResume: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
+export const Hero: React.FC<HeroProps> =  ({ onOpenResume }) => {
   return (
     <section
       id="home"
